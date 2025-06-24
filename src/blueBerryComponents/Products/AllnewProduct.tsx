@@ -1,4 +1,3 @@
-import React from 'react'
 import NewArrivalCard from '../ProductCards/NewArrivalCard'
 import { exportProduct } from '../../List'
 import './AllnewProduct.css'

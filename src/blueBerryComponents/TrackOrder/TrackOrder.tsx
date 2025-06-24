@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import './TrackOrder.css'
-import { collection, query, where, getDocs, docs } from "firebase/firestore";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom"

@@ -18,9 +18,9 @@ interface CartProps {
 const  Cart = (props: CartProps) => {
     const { cart, ClearCart, subtotal, vat, total, removeFromCart, updateQuantity } = useCart();
   const navigate = useNavigate()
-function removeUndefinedFields<T>(obj: T): T {
+function removeUndefinedFields<T extends object>(obj: T): T {
   return Object.fromEntries(
-    Object.entries(obj).filter(([_, v]) => v !== undefined)
+    Object.entries(obj).filter(([v]) => v !== undefined)
   ) as T;
 }
 const auth = getAuth();

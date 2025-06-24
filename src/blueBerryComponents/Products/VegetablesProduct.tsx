@@ -1,4 +1,3 @@
-import React from 'react'
 // import './SnackProducts.css'
 import { exportProduct } from '../../List'
 import { onQuickView } from '../../List'

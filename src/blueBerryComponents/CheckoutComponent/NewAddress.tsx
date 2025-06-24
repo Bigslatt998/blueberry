@@ -3,9 +3,8 @@ import { locationData } from '../../List';
 import './NewAddress.css'
 import { useNavigate } from "react-router-dom"
 import Swal from 'sweetalert2';
-type Props = {}
 
-const NewAddress = (props: Props) => {
+const NewAddress = () => {
   const [firstname, setfirstname] = useState('')
     const [lastname, setlastname] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
@@ -14,32 +13,9 @@ const NewAddress = (props: Props) => {
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
     const [postCode, setPostCode] = useState('')
-    const [loading, setLoading] = useState<boolean>(false);
       const navigate = useNavigate()
     
-    // const handleProceed = async (e: React.FormEvent<HTMLFormElement>) => {
-    //   e.preventDefault();
-    //   setLoading(true);
-    //   try {
-    //     // Simulate an API call
-    //     await new Promise((resolve) => setTimeout(resolve, 2000));
-    //     Swal.fire({
-    //       icon: 'success',
-    //       title: 'Address added successfully!',
-    //       showConfirmButton: false,
-    //       timer: 1500
-    //     });
-    //     navigate('/order');
-    //   } catch (error) {
-    //     Swal.fire({
-    //       icon: 'error',
-    //       title: 'Error adding address',
-    //       text: error.message
-    //     });
-    //   } finally {
-    //     setLoading(false);
-    //   }
-    // };
+
   const HandleFirstname = (e: React.ChangeEvent<HTMLInputElement> ) => {
       setfirstname(e.target.value)
     }

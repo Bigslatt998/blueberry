@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import { exportProduct, onQuickView } from '../../../List'
 import ShopAllProductCard from '../../ProductCards/ShopAllProductCard'
 const PRODUCTS_PER_PAGE = 12

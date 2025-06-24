@@ -7,3 +7,7 @@ declare module 'swiper/css/effect-coverflow';
 declare module 'react-google-recaptcha';
 declare module '*.jsx';
 declare module '../HomeComponent/MainComponent/Footer';
+declare module '../../blueBerryComponents/HomeComponent/MainComponent/Footer';
+declare module '../../blueBerryComponents/HomeComponent/MainComponent/Footer';
+declare module '../../blueBerryComponents/HomeComponent/MainComponent/Footer.tsx/Footer';
+declare module '../../firebase'

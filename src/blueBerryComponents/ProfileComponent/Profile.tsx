@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import './Profile.css'
 import { db, auth } from '../../firebase'
-import { signOut, onAuthStateChanged, User, getAuth } from 'firebase/auth'
-import { getDocs, collection, addDoc } from 'firebase/firestore'
+import { onAuthStateChanged, User, getAuth } from 'firebase/auth'
+import { getDocs, collection } from 'firebase/firestore'
 import { useNavigate } from "react-router-dom"
 import FlatOffer from '../HeaderComponent/FlatOfferComponent/FlatOffer';
 import Header from '../HeaderComponent/Header.tsx/Header';
@@ -25,15 +25,11 @@ type UserData = {
 export const Profile = () => {
   const [data, setData] = useState<UserData[]>([]);
   const [currentUser, setCurrentUser] = useState<User | null>(null)
-  const [currentUserData, setCurrentUserData] = useState<any>(null)
+  const [currentUserData, setCurrentUserData] = useState<UserData | null>(null);
   const [loading, setLoading] = useState<boolean>(true)
   const dataCollectionRef = collection(db, 'RegisteredUsers')
   const navigate = useNavigate()
-  // const [fname, setFname] = useState<string>("")
-  // const [isStudent, setIsStudent] = useState<boolean>(false)
-  // const [newemail, setNewemail] = useState<string>("")
 
-  // Listen for auth state changes
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user)
@@ -225,32 +221,3 @@ export const Profile = () => {
     </div>
   )
 }
-
-
-  // {/* Display current user info */}
-  //     {loading ? (
-  //       <p>Loading user info...</p>
-  //     ) : currentUser && currentUserData ? (
-  //       <div>
-  //         <h2>Welcome, {currentUserData.firstname}!</h2>
-  //         <p>Email: {currentUserData.email}</p>
-  //         <p>Student: {currentUserData.Student ? "Yes" : "No"}</p>
-  //       </div>
-  //     ) : (
-  //       <p>User info not found.</p>
-  //     )}
-
-  //     <form onSubmit={onsubmit}>
-  //       <input value={fname} onChange={(e) => setFname(e.target.value)} type='text' placeholder='Enter first name...' />
-  //       <input value={newemail} onChange={(e) => setNewemail(e.target.value)} type='text' placeholder='Enter email...' />
-  //       <input checked={isStudent} onChange={(e) => setIsStudent(e.target.checked)} type='checkbox' />
-  //       <button type='submit'>Submit</button>
-  //     </form>
-  //     {data.map(item => (
-  //       <div key={item.id}>
-  //         <h3>{item.firstname} {item.lastname}</h3>
-  //         <p>Email: {item.email}</p>
-  //       </div>
-  //     ))}
-
-  //     <button onClick={handlelogout}>Logout</button>
