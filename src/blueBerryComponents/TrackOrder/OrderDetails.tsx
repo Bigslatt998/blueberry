@@ -34,6 +34,7 @@ export const OrderDetails = () => {
         setLoading(true)
       const fetchOrders = async () => {
         try {
+          if (!orderId) return;
          const docRef = doc(db, "orders", orderId);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) setOrder(docSnap.data() as OrderType);

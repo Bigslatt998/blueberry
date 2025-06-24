@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 // Helper to remove undefined fields
-function removeUndefinedFields<T>(obj: T): T {
+function removeUndefinedFields<T extends object>(obj: T): T {
   return Object.fromEntries(
     Object.entries(obj).filter(([_, v]) => v !== undefined)
   ) as T;
