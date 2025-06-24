@@ -9,7 +9,7 @@ export const AllnewProduct = () => {
     
   return (
     <div className="ArrivalProduc">
-        {NewArrivalProduct.map((product) =>(
+        {NewArrivalProduct?.map((product) =>(
             <NewArrivalCard key={product.id}   product={product} onQuickView={onQuickView}/>
                     
                   ))}

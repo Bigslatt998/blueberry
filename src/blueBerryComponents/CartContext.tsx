@@ -1,23 +1,25 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { db } from '../firebase'; // Adjust path if needed
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { doc, setDoc, updateDoc, arrayUnion, arrayRemove, getDoc } from 'firebase/firestore';
+import { doc, setDoc, updateDoc, getDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 // Helper to remove undefined fields
-function removeUndefined(obj: any) {
-  return Object.fromEntries(Object.entries(obj).filter(([_, v]) => v !== undefined));
+function removeUndefinedFields<T>(obj: T): T {
+  return Object.fromEntries(
+    Object.entries(obj).filter(([_, v]) => v !== undefined)
+  ) as T;
 }
 
 // Define your product type
 export interface iProduct {
   id: number;
   name: string;
-  price: number;
-  img: string;
-  DelPrice: number;
-  type: string;
+  price?: number;
+  img?: string;
+  DelPrice?: number;
+  type?: string;
   // Add other product fields as needed
 }
 
@@ -93,13 +95,13 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       toast.info(`${product.name} is already in cart`);
       return prev;
     }
-    const updatedCart = [...prev, removeUndefined({ ...product, quantity, selectedSize: size })];
+    const updatedCart = [...prev, { ...product, quantity, selectedSize: size }];
     // Save to Firestore
     (async () => {
       try {
         const cartDocRef = getUserCartDocRef();
         await setDoc(cartDocRef, {
-          items: updatedCart,
+          items: updatedCart.map(item => removeUndefinedFields(item)),
           updatedAt: new Date()
         }, { merge: true });
       } catch (error) {
@@ -166,7 +168,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }
 };
  
-  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const subtotal = cart.reduce((sum, item) => sum + (item.price ?? 0) * item.quantity, 0);
     const vat = subtotal * 0.2;
     const total = subtotal + vat;
 

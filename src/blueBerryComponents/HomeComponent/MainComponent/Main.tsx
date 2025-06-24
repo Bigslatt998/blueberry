@@ -26,7 +26,7 @@ const Main =(props: HeaderProps) => {
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
   const [selectVendor, setSelectVendor] = useState<iVendors>(vendorList[0])
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     const interval = setInterval(() => {
       setIsTransitioning(true);
@@ -94,7 +94,7 @@ const Main =(props: HeaderProps) => {
               <div className='DealOfDdayBox1H'>
                 <h3>Deal Of The <span>Day</span></h3>
                 
-                <CountDown/>
+                <CountDown initialDays={1} initialHours={12} initialMinutes={30} initialSeconds={0}/>
               </div>
               <p>Don't wait. The time will never be just right.</p>
             </div>

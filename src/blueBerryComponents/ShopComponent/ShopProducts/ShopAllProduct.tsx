@@ -21,7 +21,7 @@ const filteredProducts = Allproducts.filter(product => product.price <= price)
      return (
       <>
     <div className="ShopGrid">
-        {productsToShow.map((product) =>(
+        {productsToShow?.map((product) =>(
             <ShopAllProductCard key={product.id}   product={product} onQuickView={onQuickView}/>
         ))}
     </div>

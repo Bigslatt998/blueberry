@@ -318,7 +318,7 @@ const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
           </div>
           <ReCAPTCHA
             sitekey="6Lczj2srAAAAAPptpOTiuR8rJPrflh7WF79yATIo"
-            onChange={value => setRecaptchaValue(value)}
+            onChange={(value: string | null) => setRecaptchaValue(value)}
           />
 
           {!codeSent ? (

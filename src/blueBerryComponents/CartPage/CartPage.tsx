@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './CartPage.css'
 import { useCart } from '../CartContext';
 import { useNavigate } from "react-router-dom"
@@ -8,7 +8,6 @@ import Nav from '../HeaderComponent/NavComponet/Nav';
 import Footer from '../HomeComponent/MainComponent/Footer';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faAnglesRight as farAngle, faTrash} from '@fortawesome/free-solid-svg-icons'
-import Cart from '../CartComponent/Cart';
 import { Empty } from '../../List';
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
@@ -20,7 +19,9 @@ interface CartProps {
 }
 export const CartPage = (props: CartProps) => {
 const { cart, ClearCart, removeFromCart, updateQuantity, subtotal, total, vat } = useCart();
-  const navigate = useNavigate()
+ const [isKeywords, setisKeywords] = useState<boolean>(false)
+  const [isCart, setIsCart] = useState<boolean>(false);  
+const navigate = useNavigate()
 const auth = getAuth();
 const currentUser = auth.currentUser;
   const handleCheck = async () => {
@@ -38,14 +39,14 @@ const currentUser = auth.currentUser;
   try {
     await addDoc(collection(db, "orders"), orderData);
     console.log(orderData)
-    // ClearCart();
-    // navigate(`/trackorder`);
+    ClearCart();
+    navigate(`/trackorder`);
     Swal.fire({
     icon: 'success',
     title: 'Your Order has been placed!',
     text: 'Check order?',
     showCancelButton: true,
-    showConfirmButton: 'Go to Checkout',
+    confirmButtonText: 'Go to Checkout',
     cancelButtonText: 'Cancel'
   }).then((result) => {
     if(result.isConfirmed) {
@@ -65,8 +66,7 @@ const currentUser = auth.currentUser;
     console.log("Failed to place order", error);
   }
 };
-  const [isKeywords, setisKeywords] = useState<boolean>(false)
-  const [isCart, setIsCart] = useState(false);
+ 
     const handleHome = () => {
       navigate('/')
     }

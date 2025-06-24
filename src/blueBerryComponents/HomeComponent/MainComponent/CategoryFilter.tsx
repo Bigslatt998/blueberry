@@ -1,13 +1,6 @@
-import React,{useState} from 'react'
+import React, {useState} from 'react'
 import { NavLink } from 'react-router-dom'
 import './CategoryFilter.css'
-
-// const categories = [
-//     {name: 'All', path: ''},
-//     {name: 'Snacks&spice', path: 'snacks'},
-//     {name: 'Fruits', path: 'fruits'},
-//     {name: 'Vegetables', path: 'vegetables'}
-// ]
 
 
 const CategoryFilter = () => {

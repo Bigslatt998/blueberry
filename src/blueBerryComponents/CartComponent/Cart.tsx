@@ -18,7 +18,11 @@ interface CartProps {
 const  Cart = (props: CartProps) => {
     const { cart, ClearCart, subtotal, vat, total, removeFromCart, updateQuantity } = useCart();
   const navigate = useNavigate()
-
+function removeUndefinedFields<T>(obj: T): T {
+  return Object.fromEntries(
+    Object.entries(obj).filter(([_, v]) => v !== undefined)
+  ) as T;
+}
 const auth = getAuth();
 const currentUser = auth.currentUser;
       const handleCheck = async () => {
@@ -27,7 +31,7 @@ const currentUser = auth.currentUser;
       const orderId = Math.floor(1000 + Math.random() * 9000).toString(); 
       const orderData = {
         orderId,
-        products: cart,
+        products: cart.map(item => removeUndefinedFields(item)),
         total,
         status: false,
         createdAt: Timestamp.now(),
@@ -36,8 +40,8 @@ const currentUser = auth.currentUser;
       try {
         await addDoc(collection(db, "orders"), orderData);
         console.log(orderData)
-        // ClearCart();
-        // navigate(`/trackorder`);
+        ClearCart();
+        navigate(`/trackorder`);
         Swal.fire({
         icon: 'success',
         title: 'Your Order has been placed!',

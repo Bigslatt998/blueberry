@@ -99,9 +99,9 @@ export const Login = () => {
         <input onChange={HandlePassword} type='password' placeholder='Password...' value={password}/>
       </label>
       <ReCAPTCHA
-        sitekey="6Lczj2srAAAAAPptpOTiuR8rJPrflh7WF79yATIo"
-        onChange={value => setRecaptchaValue(value)}
-      />
+      sitekey="6Lczj2srAAAAAPptpOTiuR8rJPrflh7WF79yATIo"
+      onChange={(value: string | null) => setRecaptchaValue(value)}
+    />
       <button type="submit">Login</button>
 
       {errorMsg && <p className="error">{errorMsg}</p>}

@@ -5,7 +5,7 @@ const VegetableProducts = ()  =>{
      const Vegetables = exportProduct.Vegetables
       return (
         <div className="ShopGrid">
-            {Vegetables.map((product) =>(
+            {Vegetables?.map((product) =>(
                 <VegetablesCard key={product.id}   product={product} onQuickView={onQuickView}/>
             ))}
         </div>

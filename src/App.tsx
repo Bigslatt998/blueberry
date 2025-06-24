@@ -22,7 +22,9 @@ import { TrackOrder } from './blueBerryComponents/TrackOrder/TrackOrder.tsx'
 import ExistingAddress from './blueBerryComponents/CheckoutComponent/ExistingAddress.tsx'
 import NewAddress from './blueBerryComponents/CheckoutComponent/NewAddress.tsx'
 import { OrderDetails } from './blueBerryComponents/TrackOrder/OrderDetails.tsx'
+import { useState } from 'react'
 function App() {
+  const [isCart, setIsCart] = useState<boolean>(false);
 
   return (
      <div className="BodyContainer">
@@ -44,7 +46,7 @@ function App() {
               <Route path='juiceProducts' element={<JuiceProducts/>}/>
               <Route path='vegetableProducts' element={<VegetableProducts/>}/>
             </Route>
-            <Route path='/Cartpage' element={<CartPage/>}/>
+            <Route path='/Cartpage' element={<CartPage setIsCart={setIsCart} isCart={isCart}/>}/>
             <Route path='/Checkout' element={<Checkout/>}>
                 <Route index element={<ExistingAddress/>}/>
                 <Route path='newaddress' element={<NewAddress/>}/>

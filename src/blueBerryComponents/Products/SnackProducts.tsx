@@ -12,7 +12,7 @@ const SnackProducts =() => {
     
     return (
     <div className="ArrivalProduc">
-        {SnackProduct.map((product) =>(
+        {SnackProduct?.map((product) =>(
             <SnacksCard key={product.id}   product={product} onQuickView={onQuickView}/>
                         
             ))}

@@ -10,7 +10,7 @@ export default function FruitsProduct() {
     
     return (
     <div className="ArrivalProduc">
-        {FruitProduct.map((product) =>(
+        {FruitProduct?.map((product) =>(
             <FruitsCard key={product.id}   product={product} onQuickView={onQuickView}/>
                         
             ))}

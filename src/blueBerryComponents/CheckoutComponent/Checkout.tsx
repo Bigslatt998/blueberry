@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './Checkout.css'
 import { Outlet, useNavigate, useLocation } from "react-router-dom"
 import FlatOffer from '../HeaderComponent/FlatOfferComponent/FlatOffer';
@@ -8,8 +8,6 @@ import Footer from '../HomeComponent/MainComponent/Footer';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faAnglesRight as farAngle} from '@fortawesome/free-solid-svg-icons'
 import Cart from '../CartComponent/Cart';
-import { useCart } from '../CartContext';
-import ExistingAddress from './ExistingAddress';
 
 
 export const Checkout = () => {

@@ -8,7 +8,7 @@ const FruitsProducts = () => {
   
   return (
      <div className="ShopGrid">
-            {FruitProduct.map((product) =>(
+            {FruitProduct?.map((product) =>(
                 <FruitsCard key={product.id}   product={product} onQuickView={onQuickView}/>
                             
                 ))}

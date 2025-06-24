@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './Profile.css'
-import UserIMG from '../../assets/UserIMG.jpeg'
 import { db, auth } from '../../firebase'
-import BlueBerryLogo from '../../assets/blueBerryLogo.png'
 import { signOut, onAuthStateChanged, User, getAuth } from 'firebase/auth'
 import { getDocs, collection, addDoc } from 'firebase/firestore'
 import { useNavigate } from "react-router-dom"
@@ -15,19 +13,25 @@ import { faAnglesRight as farAngle} from '@fortawesome/free-solid-svg-icons'
 import Cart from '../CartComponent/Cart';
 import {CakeLoading} from '../../blueBerryComponents/Loader/CakeLoading.tsx'
 import {DottedLoading} from '../../blueBerryComponents/Loader/DottedLoading.tsx'
-type Props = {}
-// import {  } from 'firebase/auth';
-
-export const Profile = (props: Props) => {
-  const [data, setData] = useState<any[]>([])
+import Swal from 'sweetalert2';
+type UserData = {
+  id: string;
+  firstname?: string;
+  lastname?: string;
+  email?: string;
+  phoneNumber?: string;
+  address?: string;
+};
+export const Profile = () => {
+  const [data, setData] = useState<UserData[]>([]);
   const [currentUser, setCurrentUser] = useState<User | null>(null)
   const [currentUserData, setCurrentUserData] = useState<any>(null)
   const [loading, setLoading] = useState<boolean>(true)
   const dataCollectionRef = collection(db, 'RegisteredUsers')
   const navigate = useNavigate()
-  const [fname, setFname] = useState<string>("")
-  const [isStudent, setIsStudent] = useState<boolean>(false)
-  const [newemail, setNewemail] = useState<string>("")
+  // const [fname, setFname] = useState<string>("")
+  // const [isStudent, setIsStudent] = useState<boolean>(false)
+  // const [newemail, setNewemail] = useState<string>("")
 
   // Listen for auth state changes
   useEffect(() => {
@@ -56,32 +60,32 @@ export const Profile = (props: Props) => {
     }
   }, [currentUser, data])
 
-  const handlelogout = async () => {
-    try {
-      await signOut(auth)
-      navigate('/login')
-    } catch (error) {
-      console.error('Error signing out:', error)
-    }
-  }
+  // const handlelogout = async () => {
+  //   try {
+  //     await signOut(auth)
+  //     navigate('/login')
+  //   } catch (error) {
+  //     console.error('Error signing out:', error)
+  //   }
+  // }
 
 
-  const onsubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    try {
-      await addDoc(dataCollectionRef, {
-        firstname: fname,
-        Student: isStudent,
-        email: newemail
-      })
-      // Refresh data after adding
-      const querySnapshot = await getDocs(dataCollectionRef)
-      const fetchedData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-      setData(fetchedData)
-    } catch (error) {
-      console.error('Error adding document:', error)
-    }
-  }
+  // const onsubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault()
+  //   try {
+  //     await addDoc(dataCollectionRef, {
+  //       firstname: fname,
+  //       Student: isStudent,
+  //       email: newemail
+  //     })
+  //     // Refresh data after adding
+  //     const querySnapshot = await getDocs(dataCollectionRef)
+  //     const fetchedData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+  //     setData(fetchedData)
+  //   } catch (error) {
+  //     console.error('Error adding document:', error)
+  //   }
+  // }
   const [isKeywords, setisKeywords] = useState<boolean>(false)
   const [isCart, setIsCart] = useState(false);
  const handleHome = () => {
@@ -113,7 +117,7 @@ export const Profile = (props: Props) => {
      const handletrackorder = () => {
       const user = getAuth().currentUser;
               if (!user) {
-                Swal.fire({
+      Swal.fire({
       icon: 'warning',
       title: 'Please log in',
       text: 'You need to log in to check your orders.',

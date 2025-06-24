@@ -6,7 +6,7 @@ const SnacksProducts =() => {
    const Snackproducts = exportProduct.Snacks
     return (
       <div className="ShopGrid">
-          {Snackproducts.map((product) =>(
+          {Snackproducts?.map((product) =>(
               <SnacksCard key={product.id}   product={product} onQuickView={onQuickView}/>
           ))}
       </div>

@@ -39,7 +39,7 @@ export default function DealofdayProduct() {
                   }
                 }}>
 
-                 {DealProduct.map((product) =>(
+                 {DealProduct?.map((product) =>(
                     <SwiperSlide>
                     <DealofdayCard key={product.id}   product={product} onQuickView={onQuickView}/>
                     </SwiperSlide>
