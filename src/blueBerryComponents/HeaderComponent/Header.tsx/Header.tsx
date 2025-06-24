@@ -303,7 +303,7 @@ const handleCart = () => {
           <p className='pKey'>Related Products</p>
           
           <div className="RelList">
-            {RelatedProduct.map((product) => (
+            {RelatedProduct?.map((product) => (
             <RelatedProductCard key={product.id}   product={product}/>
            ))}
             

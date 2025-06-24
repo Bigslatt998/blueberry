@@ -148,7 +148,7 @@ const currentUser = auth.currentUser;
                         <button onClick={() => updateQuantity(item.name, item.quantity + 1)}>+</button>
                     </div>
                 </td>
-                <td>$ {(item.price * item.quantity).toFixed(2)} 
+                <td>$ {((item.price ?? 0) * item.quantity).toFixed(2)} 
                   <span onClick={() => removeFromCart(item.name)} className='XXXX'><FontAwesomeIcon icon={faTrash}/></span></td>
                   </tr>
               </tbody>
