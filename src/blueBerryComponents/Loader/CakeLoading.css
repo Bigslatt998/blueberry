@@ -1,0 +1,42 @@
+.shapes {
+   width: 44.8px;
+   height: 44.8px;
+   color: #474bff;
+   background: conic-gradient(currentColor 0 270deg,#0000 0);
+   border-radius: 50%;
+   animation: shapes-c03ehymd 4s infinite linear;
+}
+
+.shapes::before {
+   content: "";
+   display: block;
+   height: 50%;
+   width: 50%;
+   border-top-left-radius: 112px;
+   background: currentColor;
+   animation: shapes-cskup3md 0.5s infinite alternate;
+}
+
+@keyframes shapes-c03ehymd {
+   0%, 24.99% {
+      transform: rotate(0deg);
+   }
+
+   25%, 49.99% {
+      transform: rotate(90deg);
+   }
+
+   50%, 74.99% {
+      transform: rotate(180deg);
+   }
+
+   75%, 100% {
+      transform: rotate(270deg);
+   }
+}
+
+@keyframes shapes-cskup3md {
+   100% {
+      transform: translate(-11.2px,-11.2px);
+   }
+}

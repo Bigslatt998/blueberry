@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Hand:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+.WishlistContainer{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    background: white;
+}
+
+.WishContainer{
+    /* border: .5px solid rgb(228, 225, 225); */
+    width: 90%;
+    place-self: center;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.emptywish{
+    text-align: center;
+}
+.emptywish p:nth-child(2){
+    font-size: 1.2rem;
+    font-family: "PT Serif", serif;
+}
+.emptywish img{
+    width: 100%;
+    height: 50%;
+}
+.wishItem{
+    border: .5px solid rgb(228, 225, 225);
+    border-radius: 15px;
+    width: fit-content;
+    place-self: center;
+    position: relative;
+    
+
+}
+.wishItemIMG{
+    place-self: center;
+}
+.wishItemIMG img{
+    width: 150px;
+    place-self: center;
+}
+.wishText{
+    border-top: .5px solid rgb(228, 225, 225);
+    /* margin-top: 20px; */
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.firstText{
+    display: flex;
+    justify-content: space-between;
+}
+.RemoveWish{
+    position: absolute;
+    top: -15px;
+    right: -10px;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+    border-radius: 20px;
+    background: rgb(245, 244, 244);
+
+}
+.firstof{
+    font-weight: 800;
+}
+.lastof{
+    font-weight: 600;
+}
+
+@media (max-width: 700px){
+.WishContainer{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+}

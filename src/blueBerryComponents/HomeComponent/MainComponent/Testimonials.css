@@ -1,0 +1,93 @@
+.TestimonialsContainer{
+    position: relative;
+    width: 90%;
+    overflow: hidden;
+    height: 100%;
+}
+.TestimonialsContainer .swiper{
+    height: 100%;
+    width: 80%;
+    position: relative;
+    overflow: visible;
+    z-index: 1;
+
+  
+
+}
+.TesiIMG{
+    width: 100%;
+
+}
+.TesiIMG img{
+    object-fit: cover;
+    width: 100%;
+    /* height: 100%; */
+    border-radius: 40px;
+}
+.PPPPP{
+    z-index: -1;
+    position: absolute;
+    left: -80px;
+    bottom: 10px;
+    transform: rotate(180deg);
+    writing-mode: vertical-rl;
+    font-size: 2.3rem;
+    font-weight: 900;
+    color: transparent; 
+    -webkit-text-stroke: 1px rgba(197, 195, 195, 0.473);
+}
+.TesiText{
+    height: fit-content;
+    place-self: end;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.TesiText p:nth-child(1){
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.TesiText p:nth-child(3){
+    width: fit-content;
+    height: fit-content;
+    padding: 2rem;
+    border: 1px solid  rgba(197, 195, 195, 0.281);
+    border-radius: 35px;
+    background: white;
+}
+.TestimonialsContainer .swiper-slide{
+    display: flex;
+    gap: 40px;
+}
+@media (max-width: 800px) {
+    .TestimonialsContainer .swiper-slide{
+        flex-direction: column;
+
+    }
+    .TesiIMG img{
+    width: 30%;
+    height: 30%;
+}
+.PPPPP{
+    z-index: -1;
+    position: absolute;
+    left: 90%;
+    bottom: 150px;
+    transform: rotate(0deg);
+    writing-mode: vertical-rl;
+    font-size: 2.3rem;
+    font-weight: 900;
+    color: transparent; 
+    -webkit-text-stroke: 1px rgba(197, 195, 195, 0.473);
+}
+.TestimonialsContainer .swiper{
+    height: 100%;
+    width: 100%
+}
+}
+
+
+
+
+
+

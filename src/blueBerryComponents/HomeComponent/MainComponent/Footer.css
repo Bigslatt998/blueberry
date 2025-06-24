@@ -1,0 +1,124 @@
+.FooterContainer{
+    width: 100%;
+    background: rgb(238, 236, 236);
+    height: fit-content;
+    
+}
+footer{
+    width: 90%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    place-self: center;
+    padding: 1rem;
+}
+footer .Box1{
+ width: 28%;
+ display: flex;
+ flex-direction: column;
+    /* background: red; */
+ gap: 30px
+}
+footer .Box1 img{
+    width: 150px;
+}
+footer .Box1 p{
+    line-height: 2;
+    width: 100%;
+}
+.IOSXAndriod{
+    display: flex;
+    gap: 20px;
+}
+.IOSXAndriod img{
+    width: 120px;
+    border-radius: 5px;
+}
+footer .Box p{
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+footer .Box ul{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    list-style: none;
+}
+
+.FooterBoxHeader{
+    display: flex;
+    justify-content: space-between;
+    /* width: 100%; */
+}
+.FooterBoxHeader i{
+    display: none;
+}
+footer .Box hr{
+    margin-top: -5px;
+}
+.Box5{
+    width: 28%;
+}
+.Box5 span{
+    margin-right: 20px;
+}
+.Socials{
+    display: flex;
+    gap: 20px
+}
+.Socials i{
+    width: fit-content;
+    height: fit-content;
+    padding: .5rem;
+    background: rgb(48, 48, 48);
+    color: white;
+    border-radius: 5px;
+}
+@media (max-width: 1300px){
+    .IOSXAndriod{
+        flex-direction: column;
+    }
+}
+
+    @media (max-width: 1100px){
+        .IOSXAndriod{
+        flex-direction: row;
+    }
+    footer{
+        flex-direction: column;
+        
+    }
+    .FooterBoxHeader i{
+    display: block;
+}
+.Box5{
+    width: 100%;
+}
+
+    footer .Box ul{
+        display: none;
+        margin-bottom: 30px;
+    }
+    footer .Box ul.show{
+        display: flex;
+
+    }
+    footer .Box2{
+        margin-top: 70px;
+    }
+    footer .Box1{
+        width: 50%;
+    }
+    footer .Box1 p:nth-child(1){
+        line-height: 2;
+    }
+}
+
+    @media (max-width: 700px){
+        footer .Box1{
+        width: 95%;
+    }
+    }
+
+

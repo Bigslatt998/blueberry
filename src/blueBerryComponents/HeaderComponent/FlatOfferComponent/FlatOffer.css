@@ -1,0 +1,29 @@
+.FlatOfferContainer{
+    width: 100%;
+    height: fit-content;
+    background: #3b4e8b;
+}
+
+.FlatOffer{
+    padding: 0px 5rem 0px 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.FlatOffer nav ul{
+    display: flex;
+}
+.FlatOffer nav ul li{
+    padding: 10px;
+    list-style: none;
+    color: white;
+}
+.FlatOffer .Text{
+    color: var(--Text-color);
+
+}
+@media (max-width: 1100px) {
+    .FlatOffer{
+        display: none;
+    }
+}

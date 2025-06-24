@@ -1,0 +1,69 @@
+html, body, div, span, h1, h2, h3, p, a, img, ul, li{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  /* overflow: hidden; */
+}
+html, body{
+  background: white;
+  font-family:sans-serif;
+  color: rgb(54, 54, 54);
+  scroll-behavior: smooth;
+
+}
+input[type='search']{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+input[type='search']::-webkit-search-cancle-button{
+  display: none;
+  -webkit-appearance: none;
+}
+
+:root{
+  --Text-color: #718ff1;
+  --font-color: rgb(54, 54, 54);
+}
+button{
+  border: none;
+  outline: none;
+  
+}
+
+input[type='search']{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+}
+input[type='search']::-webkit-search-cancel-button{
+   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: none;
+
+}
+input[type='search']::-moz-search-cancle-button,
+input[type='search']::-moz-search-decoration {
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input[type='search']::-ms-clear{
+  display: none;
+}
+a{
+  text-decoration: none;
+  color: var(--Text-color);
+}
+a:hover{
+  color: #2646ad;
+
+}
+input[type='checkbox']{
+      cursor: pointer;
+
+}

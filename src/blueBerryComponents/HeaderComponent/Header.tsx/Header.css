@@ -1,0 +1,533 @@
+.HeaderContainer{
+    width: 100%;
+    height: fit-content;
+    background: white;
+    position: relative;
+    z-index: 5000;
+}
+.Header .IMG{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+.Header{
+    padding: 1.5rem 0rem 1.5rem 0rem;
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    /* height: 250px; */
+    place-self: center;
+
+}
+.HeaderNav{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    position: sticky;
+
+}
+.Header .Search{
+    display: flex;
+    align-items: center;
+}
+.HeaderNav .box{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+
+}
+.HeaderNav .box i{
+    color: var(--Text-color);
+    /* font-size: 1.7rem; */
+    font-size: clamp(1.4rem, 1rem, 1rem);
+
+
+}
+.Header .Text{
+    display: flex;
+    flex-direction: column;
+
+}
+.Veg{
+    width: 130px;
+    padding: 14px;
+    border: .5px solid rgb(238, 236, 236);
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px 0px 0px 10px;
+    border-right: 0;
+    position: relative;
+}
+.VegDropDOwn{
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 200px;
+    padding: 14px;
+    height: fit-content;
+    border-radius: 10px;
+    border: .5px solid rgb(238, 236, 236);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    animation: Drop .5s ease-in-out;
+    transition: opacity .5s ease-in-out, 
+    top .5s ease-in-out;
+    background: white;
+    z-index: 2;
+}
+.VegDropDOwn ul li, .TextDropDOwn ul li{
+    padding: 10px;
+    list-style: none;
+}
+.HeaderNav .box1{
+    position: relative;
+}
+.HeaderNav .box1:hover .TextDropDOwn{
+    display: block;
+
+}
+
+.TextDropDOwn{
+    position: absolute;
+    top: 35px;
+    left: 0;
+    width: 120px;
+    padding: 14px;
+    height: fit-content;
+    border-radius: 10px;
+    border: .5px solid rgb(238, 236, 236);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    /* display: none; */
+    animation: Drop .5s ease-in-out;
+    transition: opacity .5s ease-in-out, 
+    top .5s ease-in-out;
+    background: white;
+    z-index: 50;
+
+}
+@keyframes Drop {
+    0%{
+        opacity: 0;
+        top: 100px;
+    }
+    100%{
+        opacity: 1;
+        top: 50px;
+    }
+}
+.Veg i {
+    color: rgb(185, 184, 184);
+    cursor: pointer;
+}
+.OptionMenue{
+    display: none;
+
+}
+
+.Search input{
+    padding: 17px;
+    width: 350px;
+    border: .5px solid rgb(238, 236, 236);
+    outline: none;
+    background: none;
+    border-radius: 0px 10px 10px 0px;
+
+}
+.SSSSS{
+    position: relative;
+}
+.SSSSS i{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.1rem;
+    color: rgb(185, 184, 184);
+    cursor: pointer;
+
+}
+.HeaderNav .box .Text span:last-of-type{
+    color: rgb(36, 35, 35);
+    font-weight: 700;
+}
+.HeaderNav .box .Text span:first-of-type{
+    font-size: .8rem;
+}
+.OtherMenue{
+    display: none;
+    
+}
+.MYmenue{
+    background: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    z-index: 999999999;
+    transition: transform .5s ease-in-out,  opacity .5s ease;
+    opacity: 0;
+
+}
+.MYmenue.active{
+    transform: translateX(0);
+    transition: transform .5s ease-in-out,  opacity .5s ease;
+    opacity: 1;
+}
+.Mymenuheader{
+    display: flex;
+    justify-content: space-between;
+
+}
+.Mymenuheader p{
+    font-weight: 700;
+}
+.Mymenuheader i{
+    color: red;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+.MYmenue nav ul{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.MYmenue nav ul li{
+    list-style: none;
+    border: .5px solid rgb(238, 236, 236);
+    height: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+.Socials ul{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 10px;
+}
+.Socials ul li{
+    padding: 7px;
+    list-style: none;
+    width: 20px; height: 20px;
+    background: #3b4e8b;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.KeyWords{
+    background: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    width: 90%;
+    height: 450px;
+    position: absolute;
+    /* top: 100%; */
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 5%);
+    border-radius: 25px;
+    overflow: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+.KeyWordsContainer{
+    width: 100%; height: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+}
+.ClostKey{
+    position: absolute;
+    width: 20px; height: 20px;
+    background: red;
+    /* right: 50px; */
+    border-radius: 0% 0% 25px 25px;
+    cursor: pointer;
+    top: 0;
+    right: 10%;
+}
+.ClostKey:hover{
+    height: 25px;
+
+}
+.ClostKey::before{
+    content: '';
+    position: absolute;
+    width:7.5px;
+    height: 7.5px;
+    border-radius: 50%;
+    border: 2px solid white;
+    bottom: 5px;
+    left: 4px;
+}
+.pKey{
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.KeyWords ul{
+    display: flex;
+    gap: 20px;
+    /* background: red; */
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    width: 80%;
+    scrollbar-width: none;
+    transition: all 0.5s ease;
+
+}
+
+.KeyWords ul li{
+    padding: .5rem 1rem .5rem 1rem;
+    list-style: none;
+    border: .5px solid rgb(238, 236, 236);
+    border-radius: 10px;
+
+}
+.CatList{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 150px 150px;
+    gap: 20px;
+    width: 95%;
+}
+.CatList .Box{
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.CatList .Box:nth-child(1){
+    background: rgba(250, 215, 221, 0.459);
+}
+.CatList .Box:nth-child(2){
+    background: rgba(202, 223, 230, 0.74);
+
+}
+.CatList .Box:nth-child(3){
+    background: rgba(202, 223, 230, 0.356);
+
+}
+.CatList .Box:nth-child(4){
+    background: rgba(250, 215, 221, 0.459);
+
+}
+.CatList .Box:nth-child(5){
+    background: rgba(250, 215, 221, 0.459);
+
+}
+.CatList .Box:nth-child(6){
+    background: rgba(202, 223, 230, 0.74);
+
+}
+.CatList img{
+    width: 50px;
+}
+.BOXcart span{
+    position: absolute;
+    right: -13px;
+    top: -10px;
+    font-size: .7rem;
+    width: 16px;
+    height: 16px;
+    background:  var(--Text-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    display: none;
+}
+.BoxWish span{
+    position: absolute;
+    right: -13px;
+    top: -10px;
+    font-size: .7rem;
+    width: 16px;
+    height: 16px;
+    background:  var(--Text-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    display: none;
+}
+.CartDisplay{
+    position: fixed;
+    top: 50%;
+    background:  var(--Text-color);
+    width: 25px;
+    height: 75px;
+    border-radius: 0px 25px 25px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 999999;
+}
+.CartDisplayyyyy, .BOXcart, .BoxWish{
+    position: relative;
+}
+.CartDisplay i{
+    color: #0e152c;
+    font-size: .8rem;
+    position: absolute;
+    right: 0px;
+    top: -3px;
+
+}
+.CartDisplay span{
+    position: absolute;
+    left: 0px;
+    /* right: 0px; */
+    top: -10px;
+    font-size: .5rem;
+    width: 13px;
+    height: 13px;
+    background: #0e152c;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.CartDisplay:hover{
+    width: 36px;
+    
+}
+
+@media (max-width: 1300px) {
+    .Header .Text{
+    display: none;
+    }
+    .BOXcart span, .BoxWish span{
+        display: flex;
+    }
+}
+
+@media (max-width: 1100px) {
+    .Header{
+        width: 85%;
+    }
+
+    .Option{
+        display: none;
+    }
+    .Search input{
+        padding: 13px;
+
+    }
+    .Header .Search{
+        gap: 30px;
+    }
+    .Search input{
+    border-radius: 10px;
+
+    }
+    .OptionMenue{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 2px;
+        width: fit-content;
+        padding: 5px;
+        border: .5px solid rgb(238, 236, 236);
+        border-radius: 10px;
+        cursor: pointer;
+
+    }
+    .OptionMenue .Box{
+        width: 5px; height: 5px;
+        border: .8px solid var(--Text-color);
+        position: relative;
+    }
+    .OptionMenue .Box4::before{
+        content: '';
+        position: absolute;
+        width: 2.5px; height: 5px;
+        background: white;
+        right: -2px;
+        bottom: -2px;
+        transform: rotate(-50deg);
+    }
+    .OtherMenue{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+.OtherMenue .Box{
+    width: 18px; height: .5px;
+    background: var(--Text-color);
+    border: .2px solid var(--Text-color);
+
+}
+.OtherMenue .Box2{
+    width: 11px; height: .5px;
+    background: var(--Text-color);
+    border: .2px solid var(--Text-color);
+    place-self: end;
+
+}
+    .Veg{
+        display: none;
+    }
+}
+
+@media (max-width: 1000px) {
+    .Header{
+        padding: 1rem 0rem 1.5rem 0rem;
+        gap: 20px;
+        flex-direction: column;
+        
+    }
+    .Header .IMG{
+        justify-content: space-between;
+        width: 100%;
+
+}
+}
+
+@media (max-width: 700px) {
+ .Header{
+        width: 90%;
+        place-self: center;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .ClostKey{
+        right: 20%;
+    }
+
+}
+
+@media (max-width: 1000px) and (orientation: landscape) {
+.Header{
+        width: 100%;
+    
+    }
+}

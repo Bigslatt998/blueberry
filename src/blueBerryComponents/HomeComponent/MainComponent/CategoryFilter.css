@@ -1,0 +1,20 @@
+.CategoryFilt ul{
+    display: flex;
+
+}
+.CategoryFilt a{
+    color: black;
+    text-decoration: none;
+}
+.CategoryFilt a.active{
+    color: var(--Text-color);
+    background: rgb(223, 222, 222);
+    width: fit-content;
+    height: fit-content;
+    padding: 5px 15px;
+    /* transform: skewX(-25deg); */
+    /* transform: skewX(-25deg); */
+    border-radius: 44% 56% 63% 37% / 13% 50% 50% 87%;
+
+    
+}

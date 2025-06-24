@@ -1,0 +1,6 @@
+.StarLabel input[type='radio']{
+    display: none;
+}
+.StarLabel{
+    cursor: pointer;
+}

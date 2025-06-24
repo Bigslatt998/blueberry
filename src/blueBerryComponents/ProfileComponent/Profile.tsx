@@ -1,0 +1,252 @@
+import React, { useState, useEffect } from 'react'
+import './Profile.css'
+import UserIMG from '../../assets/UserIMG.jpeg'
+import { db, auth } from '../../firebase'
+import BlueBerryLogo from '../../assets/blueBerryLogo.png'
+import { signOut, onAuthStateChanged, User, getAuth } from 'firebase/auth'
+import { getDocs, collection, addDoc } from 'firebase/firestore'
+import { useNavigate } from "react-router-dom"
+import FlatOffer from '../HeaderComponent/FlatOfferComponent/FlatOffer';
+import Header from '../HeaderComponent/Header.tsx/Header';
+import Nav from '../HeaderComponent/NavComponet/Nav';
+import Footer from '../HomeComponent/MainComponent/Footer';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faAnglesRight as farAngle} from '@fortawesome/free-solid-svg-icons'
+import Cart from '../CartComponent/Cart';
+import {CakeLoading} from '../../blueBerryComponents/Loader/CakeLoading.tsx'
+import {DottedLoading} from '../../blueBerryComponents/Loader/DottedLoading.tsx'
+type Props = {}
+// import {  } from 'firebase/auth';
+
+export const Profile = (props: Props) => {
+  const [data, setData] = useState<any[]>([])
+  const [currentUser, setCurrentUser] = useState<User | null>(null)
+  const [currentUserData, setCurrentUserData] = useState<any>(null)
+  const [loading, setLoading] = useState<boolean>(true)
+  const dataCollectionRef = collection(db, 'RegisteredUsers')
+  const navigate = useNavigate()
+  const [fname, setFname] = useState<string>("")
+  const [isStudent, setIsStudent] = useState<boolean>(false)
+  const [newemail, setNewemail] = useState<string>("")
+
+  // Listen for auth state changes
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user)
+    })
+    return () => unsubscribe()
+  }, [])
+
+  // Fetch Firestore data
+  useEffect(() => {
+    const fetchData = async () => {
+      const querySnapshot = await getDocs(dataCollectionRef)
+      const fetchedData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+      setData(fetchedData)
+      setLoading(false)
+    }
+    fetchData()
+  }, [])
+
+  // Find current user data in Firestore
+  useEffect(() => {
+    if (currentUser && data.length > 0) {
+      const userData = data.find(item => item.email === currentUser.email)
+      setCurrentUserData(userData)
+    }
+  }, [currentUser, data])
+
+  const handlelogout = async () => {
+    try {
+      await signOut(auth)
+      navigate('/login')
+    } catch (error) {
+      console.error('Error signing out:', error)
+    }
+  }
+
+
+  const onsubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    try {
+      await addDoc(dataCollectionRef, {
+        firstname: fname,
+        Student: isStudent,
+        email: newemail
+      })
+      // Refresh data after adding
+      const querySnapshot = await getDocs(dataCollectionRef)
+      const fetchedData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+      setData(fetchedData)
+    } catch (error) {
+      console.error('Error adding document:', error)
+    }
+  }
+  const [isKeywords, setisKeywords] = useState<boolean>(false)
+  const [isCart, setIsCart] = useState(false);
+ const handleHome = () => {
+      navigate('/')
+    }
+
+     const handleCartpage = async () => {
+      const user = getAuth().currentUser;
+              if (!user) {
+                if (window.confirm('Please login')) {
+                  setTimeout(() => navigate('/login'), 0);
+                }
+                return;
+              }
+      navigate('/Cartpage')
+    }
+
+     const handleCheckout = () => {
+      const user = getAuth().currentUser;
+              if (!user) {
+                if (window.confirm('Please login')) {
+                  setTimeout(() => navigate('/login'), 0);
+                }
+                return;
+              }
+      navigate('/Checkout')
+    }
+
+     const handletrackorder = () => {
+      const user = getAuth().currentUser;
+              if (!user) {
+                Swal.fire({
+      icon: 'warning',
+      title: 'Please log in',
+      text: 'You need to log in to check your orders.',
+      confirmButtonText: 'Go to Login'
+    }).then(result => {
+      if (result.isConfirmed) {
+        navigate('/login');
+      }
+    });
+      return;
+              }
+      navigate('/order')
+    }
+  return (
+     <div className="ProfileContainer">
+    <FlatOffer/>
+    <Header isKeywords={isKeywords} setisKeywords={setisKeywords}
+      isCart={isCart}
+      setIsCart={setIsCart}
+    />
+    <Nav isKeywords={isKeywords} setisKeywords={setisKeywords}/>
+    
+     <div className="Reg">
+              <div className="LogText">
+              <p>My profile</p>
+    
+              <ul>
+                <li><span onClick={handleHome}>Home</span> <span className='AngleRight'><FontAwesomeIcon icon={farAngle}/></span></li>
+                <li className='little'>profile</li>
+              </ul>
+              </div>
+            </div>
+        <div className="ProContainer">
+          <div className="box1">
+            <ul>
+              <li>User</li>
+              <li onClick={handleCartpage}>Cart</li>
+              <li onClick={handleCheckout}>Checkout</li>
+              <li onClick={handletrackorder}>Track Order</li>
+            </ul>
+          </div>
+          <div className="box2">
+            <div className="ProfileDisplay">
+              <div className="NAmeDis">
+                <div className="Box1"></div>
+                <div className="Box2">
+                  {loading ? (
+                    <DottedLoading/>
+                  ): currentUser && currentUserData ? (
+                    <p className='welsomback'>Welcome Back! {currentUserData.firstname}.</p>
+                  ) : (
+                    <p className='welsomback'>NO USER FOUND</p>
+                  )}
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Standard dummy text ever since the 1500s.</p>
+                </div>
+              </div>
+            </div>
+            <div className="ProfileText">
+              <div className="ProfText">
+              <p>About me</p>
+              <p>Account Information:</p>
+            <div className="INfoContainer">
+                {loading ? (
+                  <CakeLoading/>
+                ): currentUser && currentUserData ? (
+                  <>
+                  <div className="Box">
+              <p>E-mail address:</p>
+              <hr/>
+              <p>{currentUserData.email}</p>
+            </div>
+            <div className="Box">
+              <p>Contact number:</p>
+              <hr/>
+              <p>{currentUserData.phoneNumber}</p>
+            </div>
+            <div className="Box">
+              <p>House Address:</p>
+              <hr/>
+              <p>{currentUserData.address}</p>
+            </div>
+            <div className="Box">
+              <p>Shipping Address:</p>
+              <hr/>
+              <p>3664 N E St,<br/>
+              San Bernardino, California, 92405
+              </p>
+            </div>
+                  </>
+                ): (
+                  <>
+                <p>NO USER FOUND</p>
+            </>
+                )}
+            </div>
+            </div>
+            </div>
+          </div>
+        </div>
+     {isCart && (
+            <Cart isCart={isCart}         
+            setIsCart={setIsCart}/>
+        )}
+          <Footer/>
+    </div>
+  )
+}
+
+
+  // {/* Display current user info */}
+  //     {loading ? (
+  //       <p>Loading user info...</p>
+  //     ) : currentUser && currentUserData ? (
+  //       <div>
+  //         <h2>Welcome, {currentUserData.firstname}!</h2>
+  //         <p>Email: {currentUserData.email}</p>
+  //         <p>Student: {currentUserData.Student ? "Yes" : "No"}</p>
+  //       </div>
+  //     ) : (
+  //       <p>User info not found.</p>
+  //     )}
+
+  //     <form onSubmit={onsubmit}>
+  //       <input value={fname} onChange={(e) => setFname(e.target.value)} type='text' placeholder='Enter first name...' />
+  //       <input value={newemail} onChange={(e) => setNewemail(e.target.value)} type='text' placeholder='Enter email...' />
+  //       <input checked={isStudent} onChange={(e) => setIsStudent(e.target.checked)} type='checkbox' />
+  //       <button type='submit'>Submit</button>
+  //     </form>
+  //     {data.map(item => (
+  //       <div key={item.id}>
+  //         <h3>{item.firstname} {item.lastname}</h3>
+  //         <p>Email: {item.email}</p>
+  //       </div>
+  //     ))}
+
+  //     <button onClick={handlelogout}>Logout</button>

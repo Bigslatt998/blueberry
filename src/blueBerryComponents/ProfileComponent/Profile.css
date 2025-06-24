@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Hand:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+.ProfileContainer{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    background: white;
+}
+.ProContainer{
+    width: 90%;
+    place-self: center;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: .3fr 1fr;
+    gap: 30px;
+}
+.ProContainer .box1{
+    width: 100%;
+    height: fit-content;
+    background: rgb(245, 244, 244);
+    border-radius: 25px;
+
+}
+.ProContainer .box1 ul{
+    padding: .5rem;
+}
+.ProContainer .box1 ul li{
+    cursor: pointer;
+    list-style: none;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgb(197, 195, 195);
+}
+.ProContainer .box1 ul li:nth-child(4){
+    border-bottom: 0px;
+}
+.ProContainer .box2{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.ProfileDisplay {
+    width: 100%;
+    /* background: blue; */
+    height: 45vh;
+    border-radius: 25px;
+    /* background-repeat: no-repeat;  */
+    /* background-position: center; */
+    /* background-size: contain; */
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+
+}
+.NAmeDis{
+    width: 90%;
+    height: 150px;
+    z-index: 5;
+    display: flex;
+    gap: 0px;
+}
+.ProfileDisplay::before{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../../assets/blueBerryLogo.png');
+     background-position: center;
+    background-size: contain;
+    filter: blur(15px);
+
+}
+.ProfileDisplay::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.288);
+
+}
+
+.NAmeDis .Box1{
+    width: 250px;
+    height: 100%;
+    background: url('../../assets/UserIMG.jpeg');
+    z-index: 2;
+     /* background-position: cover; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.NAmeDis .Box2{
+    z-index: 2;
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ProfileText {
+    width: 100%;
+    height: fit-content;
+    border-radius: 25px;
+    border: .5px solid rgb(228, 225, 225);
+    display: flex;
+    justify-content: center;
+
+}
+.ProfText{
+    width: 90%;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 2rem;
+    /* place-self: center; */
+}
+.welsomback{
+    font-weight: 800;
+    color: var(--Text-color);
+}
+.ProfText p:nth-child(1){
+    font-weight: 800;
+    color: var(--Text-color);
+    text-transform: capitalize;
+}
+.INfoContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+.INfoContainer .Box{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.INfoContainer .Box hr{
+    width: 100%;
+}
+.INfoContainer .Box p:nth-child(1){
+   
+}
+@media (max-width: 900px){
+    .ProContainer{
+        display: flex;
+        flex-direction: column;
+    }
+}

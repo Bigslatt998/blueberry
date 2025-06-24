@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Hand:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+.LoginContainer{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    position: relative;
+}
+.LogText{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    place-self: center;
+}
+.LogText p{
+    font-weight: 800;
+    color: var(--Text-color);
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.LogText ul{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    cursor: pointer;
+}
+.LogText ul li{
+    list-style: none;
+    
+}
+.AngleRight{
+    margin-left: 5px;
+}
+.LoginContainer form{
+    /* margin: 50px; */
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    place-self: center;
+}
+.LoContainer{
+    border: .5px solid rgb(228, 225, 225);
+    width: 85%;
+    place-self: center;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+.LoginHeader{
+    place-self: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.LoginLabel{
+    display: flex; 
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 50px;
+
+}
+
+.LoginHeader p:nth-child(2){
+    letter-spacing: 3px;
+    font-weight: 500;
+    font-family: "Edu VIC WA NT Hand", cursive;
+    font-optical-sizing: auto;
+    width: 100%;
+    height: 35px;
+    text-wrap: nowrap;
+    overflow: hidden;
+    place-self: center;
+    animation: typing 5s steps(45) infinite alternate-reverse;
+}
+.buyXsel{
+    color: var(--Text-color);
+    text-transform: uppercase;
+    font-weight: 700;
+
+}
+
+@keyframes typing {
+    from{
+        width: 0%;
+    }
+}
+.LoginHeader p:nth-child(1){
+    font-size: 2.5rem;
+    font-family: "PT Serif", serif;
+}
+.LoginContainer form input{
+    height: 60px;
+    padding-inline: 1rem;
+    border-radius: 10px;
+    outline: none;
+    border: .5px solid rgb(228, 225, 225);
+}
+
+
+.RegisterForm input, .RegisterForm select{
+    height: 60px;
+    padding-inline: 1rem;
+    border-radius: 10px;
+    outline: none;
+    
+    border: .5px solid rgb(228, 225, 225);
+}
+.LoContainer input:focus{
+    border: 1px solid var(--Text-color);
+}
+.little{
+    font-size: .7rem;
+}
+.LoContainer button{
+    background: var(--Text-color);
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 50px;
+    padding: 1rem;
+    place-self: center;
+    display: flex;
+    border-radius: 10px;
+}
+.LoContainer button:hover{
+    background: transparent;
+    color: black;
+    border: .5px solid rgb(228, 225, 225);
+
+}
+.LoContainer button:active{
+    background: blue;
+}
+.Cakeloading{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 700px){
+    .LogText{
+        width: 95%;
+        padding-inline: 1rem;
+    }
+}
