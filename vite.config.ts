@@ -9,6 +9,7 @@ export default defineConfig({
     host: true,
     headers: {
       "content-type": "text/javascript",
+
     }
   },
    build: {
