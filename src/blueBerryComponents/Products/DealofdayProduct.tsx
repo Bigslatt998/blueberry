@@ -1,8 +1,6 @@
-import React from 'react'
 import './DealoddayProduct.css'
 import { exportProduct } from '../../List'
 import { onQuickView } from '../../List'
-import FruitsCard from '../ProductCards/FruitsCard'
 import DealofdayCard from '../ProductCards/DealofdayCard'
 import 'swiper/css';
 import 'swiper/css/navigation';

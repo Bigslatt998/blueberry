@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './CartPage.css'
 import { useCart } from '../CartContext';
 import { useNavigate } from "react-router-dom"
@@ -40,7 +40,7 @@ const currentUser = auth.currentUser;
     await addDoc(collection(db, "orders"), orderData);
     console.log(orderData)
     ClearCart();
-    navigate(`/trackorder`);
+    // navigate(`/trackorder`);
     Swal.fire({
     icon: 'success',
     title: 'Your Order has been placed!',

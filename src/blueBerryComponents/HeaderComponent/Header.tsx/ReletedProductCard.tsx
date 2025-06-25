@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import  { useContext} from 'react'
 import './RelatedProductCard.css'
 // import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { FaShoppingCart} from 'react-icons/fa'

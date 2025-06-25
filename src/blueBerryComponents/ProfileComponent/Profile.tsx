@@ -52,7 +52,7 @@ export const Profile = () => {
   useEffect(() => {
     if (currentUser && data.length > 0) {
       const userData = data.find(item => item.email === currentUser.email)
-      setCurrentUserData(userData)
+      setCurrentUserData(userData ?? null)
     }
   }, [currentUser, data])
 

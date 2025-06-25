@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import './Range.css'
 const SVG_WIDTH = 600;
@@ -24,7 +24,7 @@ export const GooSlider: React.FC = () => {
     const svg = document.getElementById("gooSVG");
     let isDragging = false;
 
-    const onPointerDown = (e: PointerEvent) => {
+    const onPointerDown = () => {
       isDragging = true;
       document.addEventListener("pointermove", onPointerMove);
       document.addEventListener("pointerup", onPointerUp);

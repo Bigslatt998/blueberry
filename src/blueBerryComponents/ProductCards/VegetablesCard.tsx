@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import { useContext} from 'react'
 // import './VegetablesCard.css'
 import { CartContext } from '../CartContext.tsx'
 import { iProduct } from '../../types.ts'

@@ -1,9 +1,8 @@
-import React from 'react'
 import './Testimonials.css'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay, EffectFade, EffectCoverflow } from 'swiper/modules';
+import { EffectCoverflow } from 'swiper/modules';
 import { TestimonialsList } from '../../../List';
 import 'swiper/css/effect-fade'
 import 'swiper/css/effect-coverflow'

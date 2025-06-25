@@ -1,4 +1,3 @@
-import React from 'react'
 import './CakeLoading.css'
 
 export const CakeLoading = () => {

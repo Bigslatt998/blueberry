@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import './Home.css'
 import FlatOffer from '../HeaderComponent/FlatOfferComponent/FlatOffer'
 import Header from '../HeaderComponent/Header.tsx/Header'

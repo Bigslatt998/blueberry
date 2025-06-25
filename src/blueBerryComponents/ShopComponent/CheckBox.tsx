@@ -1,4 +1,3 @@
-import React from 'react'
 import './CheckBox.css'
 interface CheckBoxProps {
   checked?: boolean;

@@ -6,8 +6,8 @@ import { useNavigate, Outlet, NavLink, useLocation } from "react-router-dom";
 import FlatOffer from '../../blueBerryComponents/HeaderComponent/FlatOfferComponent/FlatOffer';
 import Header from '../../blueBerryComponents/HeaderComponent/Header.tsx/Header';
 import Nav from '../../blueBerryComponents/HeaderComponent/NavComponet/Nav';
-// import Footer from '../../blueBerryComponents/HomeComponent/MainComponent/Footer';
-import Footer from '../../blueBerryComponents/HomeComponent/MainComponent/Footer.tsx/Footer';
+import Footer from '../../blueBerryComponents/HomeComponent/MainComponent/Footer';
+// import Footer from '../blueBerryComponents/HomeComponent/MainComponent/Footer.tsx/Footer';
 import Cart from '../../blueBerryComponents/CartComponent/Cart';
 import ExploreCategories from '../HomeComponent/ExploreCategoriesComponent/ExploreCategories';
 import CheckBox from '../../blueBerryComponents/ShopComponent/CheckBox.tsx'

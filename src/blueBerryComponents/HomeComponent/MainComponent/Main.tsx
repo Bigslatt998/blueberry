@@ -1,11 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import{useState, useEffect} from 'react'
 import './Main.css'
 import { iVendors } from '../../../types';
-import { slides, catIIMG, explorCatList, support, vendorList } from '../../../List'
-import 'swiper/css';
-import 'swiper/css/navigation';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper/modules';
+import { slides, catIIMG, support, vendorList } from '../../../List'
 import { ToastContainer } from 'react-toastify'
 import { Outlet, useNavigate } from 'react-router-dom'
 import CategoryFilter from './CategoryFilter';

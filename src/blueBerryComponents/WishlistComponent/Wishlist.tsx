@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import './Wishlist.css'
 import FlatOffer from '../../blueBerryComponents/HeaderComponent/FlatOfferComponent/FlatOffer';
 import Header from '../../blueBerryComponents/HeaderComponent/Header.tsx/Header';

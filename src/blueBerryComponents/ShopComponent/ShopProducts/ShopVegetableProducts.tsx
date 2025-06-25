@@ -1,4 +1,3 @@
-import React from 'react'
 import { exportProduct, onQuickView } from '../../../List'
 import VegetablesCard from '../../ProductCards/VegetablesCard'
 const VegetableProducts = ()  =>{

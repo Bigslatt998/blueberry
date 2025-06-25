@@ -41,7 +41,7 @@ const currentUser = auth.currentUser;
         await addDoc(collection(db, "orders"), orderData);
         console.log(orderData)
         ClearCart();
-        navigate(`/trackorder`);
+        // navigate(`/order`);
         Swal.fire({
         icon: 'success',
         title: 'Your Order has been placed!',
