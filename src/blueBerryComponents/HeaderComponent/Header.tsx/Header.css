@@ -98,7 +98,7 @@
     border-radius: 10px;
     border: .5px solid rgb(238, 236, 236);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    /* display: none; */
+    display: none;
     animation: Drop .5s ease-in-out;
     transition: opacity .5s ease-in-out, 
     top .5s ease-in-out;
