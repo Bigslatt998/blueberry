@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './Profile.css'
-import { db, auth } from '../../firebase'
+import { db, auth } from '../../firebase.config.ts';
 import { onAuthStateChanged, User, getAuth } from 'firebase/auth'
 import { getDocs, collection } from 'firebase/firestore'
 import { useNavigate } from "react-router-dom"

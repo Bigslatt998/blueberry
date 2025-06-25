@@ -1,10 +1,7 @@
 import  { useContext} from 'react'
 import './RelatedProductCard.css'
-// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { FaShoppingCart} from 'react-icons/fa'
 import StarRating from '../../HeaderComponent/Header.tsx/Star.tsx'
-// import { faStar as farStar } from '@fortawesome/free-regular-svg-icons'
-// type Props = {}
 import { CartContext } from '../../CartContext.tsx'
 import { iProduct } from '../../../types.ts'
 

@@ -1,8 +1,6 @@
 import NewArrivalCard from '../ProductCards/NewArrivalCard'
-import { exportProduct } from '../../List'
+import { exportProduct , onQuickView} from '../../List'
 import './AllnewProduct.css'
-// type Props = {}
-import { onQuickView } from '../../List'
 export const AllnewProduct = () => {
         const NewArrivalProduct = exportProduct.NewArrival
     

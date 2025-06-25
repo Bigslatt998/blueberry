@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import {getAuth} from "firebase/auth";
 import {getFirestore} from "firebase/firestore";
 
-export const firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyABUEpaifJhvGHvyrNrVUSHuLD_Sg0T9GA",
   authDomain: "blue-berry-d4c70.firebaseapp.com",
   projectId: "blue-berry-d4c70",

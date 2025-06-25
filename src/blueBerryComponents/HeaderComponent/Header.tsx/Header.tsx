@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './Header.css'
 import gsap from 'gsap'
 import BlueBerryLogo from '../../../assets/blueBerryLogo.png'

@@ -1,6 +1,4 @@
-// import './SnackProducts.css'
-import { exportProduct } from '../../List'
-import { onQuickView } from '../../List'
+import { exportProduct, onQuickView } from '../../List'
 import VegetablesCard from '../ProductCards/VegetablesCard'
 
 // type Props = {}

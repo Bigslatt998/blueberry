@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './TrackOrder.css'
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "../../firebase";
+import {db} from '../../firebase.config';
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom"
 import FlatOffer from '../HeaderComponent/FlatOfferComponent/FlatOffer';

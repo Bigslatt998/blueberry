@@ -11,14 +11,6 @@ interface Props {
     product: iProduct;
     onQuickView: (product: iProduct) => void;
 }
-// interface Product{
-//     id:number;
-//     name: string;
-//     price?: number;
-//     DelPrice?: number;
-//     img?: string;
-//     rating?: number
-// }
 
 const JuiceProductCard =({product, onQuickView}: Props) => {
     const {addToCart} =useContext(CartContext)

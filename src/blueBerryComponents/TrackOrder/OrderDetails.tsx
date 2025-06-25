@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react'
 import './TrackOrder.css'
 import { useParams } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../firebase";
+import { db } from '../../firebase.config';
 import { useNavigate } from "react-router-dom"
 import FlatOffer from '../HeaderComponent/FlatOfferComponent/FlatOffer';
 import Header from '../HeaderComponent/Header.tsx/Header';
 import Nav from '../HeaderComponent/NavComponet/Nav';
 import Footer from '../HomeComponent/MainComponent/Footer';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faAnglesRight as farAngle} from '@fortawesome/free-solid-svg-icons'
+import { faAnglesRight} from '@fortawesome/free-solid-svg-icons'
 import { CakeLoading } from '../Loader/CakeLoading';
 
 type OrderType = {
@@ -61,7 +61,7 @@ export const OrderDetails = () => {
               <p>Order</p>
     
               <ul>
-                <li><span onClick={handleHome}>Home</span> <span className='AngleRight'><FontAwesomeIcon icon={farAngle}/></span></li>
+                <li><span onClick={handleHome}>Home</span> <span className='AngleRight'><FontAwesomeIcon icon={faAnglesRight}/></span></li>
                 <li className='little'>Order</li>
               </ul>
               </div>

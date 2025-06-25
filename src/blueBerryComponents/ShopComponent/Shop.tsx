@@ -1,17 +1,15 @@
 import {useState} from 'react'
 import './Shop.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faAnglesRight as farAngle , faAnglesDown} from '@fortawesome/free-solid-svg-icons'
+import { faAnglesRight , faAnglesDown} from '@fortawesome/free-solid-svg-icons'
 import { useNavigate, Outlet, NavLink, useLocation } from "react-router-dom";
 import FlatOffer from '../../blueBerryComponents/HeaderComponent/FlatOfferComponent/FlatOffer';
 import Header from '../../blueBerryComponents/HeaderComponent/Header.tsx/Header';
 import Nav from '../../blueBerryComponents/HeaderComponent/NavComponet/Nav';
 import Footer from '../../blueBerryComponents/HomeComponent/MainComponent/Footer';
-// import Footer from '../blueBerryComponents/HomeComponent/MainComponent/Footer.tsx/Footer';
 import Cart from '../../blueBerryComponents/CartComponent/Cart';
 import ExploreCategories from '../HomeComponent/ExploreCategoriesComponent/ExploreCategories';
 import CheckBox from '../../blueBerryComponents/ShopComponent/CheckBox.tsx'
-// type Props = {}
 
 const Shop =() => {
   const [isKeywords, setisKeywords] = useState<boolean>(false)
@@ -52,7 +50,7 @@ const [price, setPrice] = useState(200); // Default max price
           <p>Shop</p>
 
           <ul>
-            <li><span onClick={handleHome}>Home</span> <span className='AngleRight'><FontAwesomeIcon icon={farAngle}/></span></li>
+            <li><span onClick={handleHome}>Home</span> <span className='AngleRight'><FontAwesomeIcon icon={faAnglesRight}/></span></li>
             <li className='little'>SHOP</li>
           </ul>
           </div>
@@ -91,7 +89,7 @@ const [price, setPrice] = useState(200); // Default max price
                 </ul>
                 <div className="LoadMore">
                   <a href=''>Load more</a>
-                  <a href='' className='AngleRight'><FontAwesomeIcon icon={farAngle}/></a>
+                  <a href='' className='AngleRight'><FontAwesomeIcon icon={faAnglesRight}/></a>
                 </div>
                 </div>
                     <hr/>
@@ -120,7 +118,7 @@ const [price, setPrice] = useState(200); // Default max price
                 </ul>
                 <div className="LoadMoreII">
                   <a href=''>Load more</a>
-                  <a href='' className='AngleRight'><FontAwesomeIcon icon={farAngle}/></a>
+                  <a href='' className='AngleRight'><FontAwesomeIcon icon={faAnglesRight}/></a>
                 </div>
                   <hr/>
                 <div className="PriceFilter">

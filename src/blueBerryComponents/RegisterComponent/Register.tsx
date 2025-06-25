@@ -2,7 +2,7 @@ import {useState} from 'react'
 import Swal from 'sweetalert2';
 import { useNavigate } from "react-router-dom";
 import './Register.css'
-import { auth, db } from '../../firebase';
+import { auth, db } from '../../firebase.config.ts';
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { collection, addDoc } from 'firebase/firestore'
 import FlatOffer from '../HeaderComponent/FlatOfferComponent/FlatOffer';

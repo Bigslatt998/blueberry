@@ -1,4 +1,3 @@
-import React from 'react'
 import { explorCatList } from '../../../List'
 import 'swiper/css';
 import 'swiper/css/navigation';

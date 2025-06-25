@@ -1,13 +1,13 @@
-import React,{useEffect} from 'react'
+import {useEffect} from 'react'
 import './Cart.css'
 import { useCart } from '../CartContext';
 import { Empty } from '../../List';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faXmark as farXmark, faTrash} from '@fortawesome/free-solid-svg-icons'
+import { faXmark, faTrash} from '@fortawesome/free-solid-svg-icons'
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import { db } from "../../firebase"; 
-import { useNavigate } from "react-router-dom"
+import { db } from '../../firebase.config'; 
+import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 
 // type Props = {}
@@ -117,7 +117,7 @@ const currentUser = auth.currentUser;
                     </div>
                   </div>
                     <i className='RemoveItem' onClick={() => removeFromCart(item.name)}>
-                    <FontAwesomeIcon icon={farXmark} />
+                    <FontAwesomeIcon icon={faXmark} />
                     </i>
                 </div>
               ))}

@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import './Login.css'
-import { auth } from '../../firebase'
+import { auth } from '../../firebase.config'
 import { useNavigate } from "react-router-dom";
 import FlatOffer from '../HeaderComponent/FlatOfferComponent/FlatOffer';
 import Header from '../HeaderComponent/Header.tsx/Header';
@@ -8,7 +8,7 @@ import Nav from '../HeaderComponent/NavComponet/Nav';
 import Footer from '../HomeComponent/MainComponent/Footer';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faAnglesRight as farAngle} from '@fortawesome/free-solid-svg-icons'
+import { faAnglesRight} from '@fortawesome/free-solid-svg-icons'
 import Cart from '../CartComponent/Cart';
 import { CakeLoading } from '../Loader/CakeLoading';
 import ReCAPTCHA from "react-google-recaptcha";
@@ -77,7 +77,7 @@ export const Login = () => {
           <p>LOGIN</p>
 
           <ul>
-            <li><span onClick={handleHome}>Home</span> <span className='AngleRight'><FontAwesomeIcon icon={farAngle}/></span></li>
+            <li><span onClick={handleHome}>Home</span> <span className='AngleRight'><FontAwesomeIcon icon={faAnglesRight}/></span></li>
             <li className='little'>LOGIN</li>
           </ul>
           </div>

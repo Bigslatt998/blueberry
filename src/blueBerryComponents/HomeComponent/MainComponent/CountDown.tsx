@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import './CountDown.css'
-// type Props = {}
 interface CountdownProps {
   initialDays: number;
   initialHours: number;
@@ -13,7 +12,7 @@ interface TimeLeft {
   hours: number;
   minutes: number;
   seconds: number;
-  endTime?: number; // timestamp when countdown will end
+  endTime?: number; 
 }
 export const CountDown: React.FC<CountdownProps> = ({
      initialDays = 25,
@@ -21,7 +20,7 @@ export const CountDown: React.FC<CountdownProps> = ({
   initialMinutes = 47,
   initialSeconds = 45,
 }) => {
-     // Load saved state from localStorage or use initial values
+  
   const loadSavedState = (): TimeLeft => {
     const savedState = localStorage.getItem('countdownState');
     if (savedState) {

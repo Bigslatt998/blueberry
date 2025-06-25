@@ -1,5 +1,4 @@
-import { exportProduct } from '../../List'
-import { onQuickView } from '../../List'
+import { exportProduct, onQuickView } from '../../List'
 import SnacksCard from '../ProductCards/SnacksCard'
 
 

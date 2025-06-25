@@ -1,20 +1,13 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import './Footer.css'
 import BlueBerryLogo from '../../../assets/blueBerryLogo.png'
 import Android from '../../../assets/android.png'
 import AppleStore from '../../../assets/appleStore.png'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faLocationDot as farLocation} from '@fortawesome/free-solid-svg-icons'
-
-// import { faLoc as farStar} from '@fortawesome/free-regular-svg-icons'
-import { FaShoppingCart, FaAngleDown, FaSearch, FaFacebook, FaInstagram, FaLinkedin, FaAngleDoubleDown, FaAngleDoubleUp, FaLocationArrow } from 'react-icons/fa'
+import { faLocationDot} from '@fortawesome/free-solid-svg-icons'
+import { FaFacebook, FaInstagram, FaLinkedin, FaAngleDoubleDown, FaAngleDoubleUp } from 'react-icons/fa'
 import { faWhatsapp, faXTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
-
-// type Props = {}
-
-
-
 
 const Footer = () => {
 
@@ -90,7 +83,7 @@ const Footer = () => {
             <hr/>
             
                 <ul className={`${isOpenIV ? 'show' : ''}`}>
-                <li><span><FontAwesomeIcon icon={farLocation}/></span>971 Lajamni, Motavarachha, Surat, Gujarat, Bharat 394101.</li>
+                <li><span><FontAwesomeIcon icon={faLocationDot}/></span>971 Lajamni, Motavarachha, Surat, Gujarat, Bharat 394101.</li>
                 <li><span><FontAwesomeIcon icon={faWhatsapp}/></span>+00 9876543210</li>
                 <li><span><FontAwesomeIcon icon={faEnvelope}/></span> blueberry@gmail.com</li>
                 <div className="Socials">

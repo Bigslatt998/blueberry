@@ -6,7 +6,7 @@ import Nav from '../../blueBerryComponents/HeaderComponent/NavComponet/Nav';
 import Footer from '../../blueBerryComponents/HomeComponent/MainComponent/Footer';
 import StarRating from '../../blueBerryComponents/HeaderComponent/Header.tsx/Star.tsx'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faXmark as farXmark, faAnglesRight as farAngle} from '@fortawesome/free-solid-svg-icons'
+import { faXmark , faAnglesRight} from '@fortawesome/free-solid-svg-icons'
 import { Empty } from '../../List';
 import { useWishlist } from '../FavoriteContect';
 import { useNavigate } from "react-router-dom";
@@ -33,7 +33,7 @@ const Wishlist = () => {
                 <p>Wishlist</p>
       
                 <ul>
-                  <li><span onClick={handleHome}>Home</span> <span className='AngleRight'><FontAwesomeIcon icon={farAngle}/></span></li>
+                  <li><span onClick={handleHome}>Home</span> <span className='AngleRight'><FontAwesomeIcon icon={faAnglesRight}/></span></li>
                   <li className='little'>Wishlist</li>
                 </ul>
                 </div>
@@ -61,7 +61,7 @@ const Wishlist = () => {
                   <p className='lastof'>${item.price}</p>
                   </div>
                   <i onClick={() =>removeFromWishlist(item.name)} className='RemoveWish'>
-                  <FontAwesomeIcon icon={farXmark} />
+                  <FontAwesomeIcon icon={faXmark} />
                   </i>
             </div>
             ))}
@@ -78,23 +78,3 @@ const Wishlist = () => {
 }
 
 export default Wishlist
-
-
-// {wishlist.map((item, idx) => (
-//             <div key={idx}  className="wishItem">
-//               <div className="wishItemIMG">
-//               <img src={item.img}  alt={item.name}/>
-//               </div>
-            //   <div className='wishText'>
-            //     <div className='firstText'>
-            //       <p></p>
-            //       <StarRating/>
-            //       </div>
-            //       <p className='firstof'>{item.name}</p>
-            //       <p className='lastof'>${item.price}</p>
-            //       </div>
-            //       <i className='RemoveWish'>
-            //       <FontAwesomeIcon icon={farXmark} />
-            //       </i>
-            // </div>
-//           ))}

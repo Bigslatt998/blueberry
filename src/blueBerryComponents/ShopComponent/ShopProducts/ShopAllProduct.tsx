@@ -15,7 +15,7 @@ const filteredProducts = Allproducts.filter(product => product.price <= price)
   const productsToShow = filteredProducts.slice(startIdx, endIdx)
    const handlePageChange = (page: number) => {
     setCurrentPage(page)
-    window.scrollTo({ top: 0, behavior: 'smooth' }) // Optional: scroll to top on page change
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
      return (

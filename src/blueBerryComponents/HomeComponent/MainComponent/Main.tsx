@@ -12,12 +12,12 @@ import TastySnacks from '../../../assets/TastySnaks.png'
 import Testimonials from './Testimonials';
 import Footer from './Footer';
 import ExploreCategories from '../ExploreCategoriesComponent/ExploreCategories';
-interface HeaderProps {
-  isCart: boolean;
-  setIsCart: React.Dispatch<React.SetStateAction<boolean>>
-}
+// interface HeaderProps {
+//   isCart: boolean;
+//   setIsCart: React.Dispatch<React.SetStateAction<boolean>>
+// }
 // import { iProduct } from '../../../types.ts'
-const Main =(props: HeaderProps) => {
+const Main =() => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
   const [selectVendor, setSelectVendor] = useState<iVendors>(vendorList[0])
@@ -195,7 +195,7 @@ const Main =(props: HeaderProps) => {
           </footer>
           <ToastContainer toastStyle={{
             background: 'white'
-          }} position='top-right' autoClose={300} style={{zIndex: 999999999999999}}/>
+          }} position='top-right' autoClose={300} style={{zIndex: 9999999999}}/>
         </div>
   )
 }

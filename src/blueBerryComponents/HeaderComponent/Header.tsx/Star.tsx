@@ -4,12 +4,11 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faStar} from '@fortawesome/free-solid-svg-icons'
 import { faStar as farStar} from '@fortawesome/free-regular-svg-icons'
 import { getAuth, onAuthStateChanged, User } from 'firebase/auth'
-import { db } from '../../../firebase'
+import { db } from '../../../firebase.config';
 import { doc, setDoc, getDoc } from 'firebase/firestore'
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 
-// type Props = {}
 interface StarRatingProps{
     initialRating?: number;
     onRatingChange?: (rating: number) => void;
@@ -116,11 +115,6 @@ const StarRating: React.FC<StarRatingProps> =({
         })}
     </div>
   )
-                // <i><FontAwesomeIcon icon={farStar}/></i>
 }
 
 export default StarRating
-
-// color={ratingValue <= (hover || rating ) ? color: 'green'}
-//                 size={size} onMouseEnter={() => setHover(ratingValue)}
-//                 onMouseLeave={() => setHover(0)}

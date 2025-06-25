@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
-import { db } from '../firebase'; // Adjust path if needed
+import { db } from '../firebase.config'; // Adjust path if needed
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';

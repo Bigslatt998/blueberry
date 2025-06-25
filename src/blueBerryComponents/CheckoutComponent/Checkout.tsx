@@ -111,32 +111,3 @@ const products = orderSummary.products ?? [];
     </div>
   )
 }
-
-
-  // {/* Display current user info */}
-  //     {loading ? (
-  //       <p>Loading user info...</p>
-  //     ) : currentUser && currentUserData ? (
-  //       <div>
-  //         <h2>Welcome, {currentUserData.firstname}!</h2>
-  //         <p>Email: {currentUserData.email}</p>
-  //         <p>Student: {currentUserData.Student ? "Yes" : "No"}</p>
-  //       </div>
-  //     ) : (
-  //       <p>User info not found.</p>
-  //     )}
-
-  //     <form onSubmit={onsubmit}>
-  //       <input value={fname} onChange={(e) => setFname(e.target.value)} type='text' placeholder='Enter first name...' />
-  //       <input value={newemail} onChange={(e) => setNewemail(e.target.value)} type='text' placeholder='Enter email...' />
-  //       <input checked={isStudent} onChange={(e) => setIsStudent(e.target.checked)} type='checkbox' />
-  //       <button type='submit'>Submit</button>
-  //     </form>
-  //     {data.map(item => (
-  //       <div key={item.id}>
-  //         <h3>{item.firstname} {item.lastname}</h3>
-  //         <p>Email: {item.email}</p>
-  //       </div>
-  //     ))}
-
-  //     <button onClick={handlelogout}>Logout</button>

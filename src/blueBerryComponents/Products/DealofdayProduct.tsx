@@ -6,7 +6,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
-// type Props = {}
 
 export default function DealofdayProduct() {
             const DealProduct = exportProduct.DealofDay

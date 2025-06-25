@@ -1,5 +1,4 @@
 import { useContext} from 'react'
-// import './VegetablesCard.css'
 import { CartContext } from '../CartContext.tsx'
 import { iProduct } from '../../types.ts'
 import StarRating from '../HeaderComponent/Header.tsx/Star.tsx'
@@ -11,14 +10,7 @@ interface Props {
     product: iProduct;
     onQuickView: (product: iProduct) => void;
 }
-// interface Product{
-//     id:number;
-//     name: string;
-//     price?: number;
-//     DelPrice?: number;
-//     img?: string;
-//     rating?: number
-// }
+
 
 const VegetablesCard =({product, onQuickView}: Props) => {
     const {addToCart} =useContext(CartContext)

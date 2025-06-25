@@ -6,11 +6,6 @@ import Nav from '../HeaderComponent/NavComponet/Nav'
 import Main from '../HomeComponent/MainComponent/Main.tsx'
 import Cart from '../CartComponent/Cart.tsx'
 
-// type Props = {}
-
-
-
-
 const Home = () => {
     const [isKeywords, setisKeywords] = useState<boolean>(false)
     const [isCart, setIsCart] =useState<boolean>(false)
@@ -20,7 +15,7 @@ const Home = () => {
         <FlatOffer/>
         <Header isCart={isCart} setIsCart={setIsCart} isKeywords={isKeywords} setisKeywords={setisKeywords}/>
         <Nav isKeywords={isKeywords} setisKeywords={setisKeywords}/>
-        <Main  isCart={isCart} setIsCart={setIsCart}/>
+        <Main  />
         <Cart isCart={isCart} setIsCart={setIsCart}/>
               
     </div>

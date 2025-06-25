@@ -1,7 +1,5 @@
 import './FlatOffer.css'
 
-// type Props = {}
-
 const FlatOffer =() => {
   return (
     <div className='FlatOfferContainer'>

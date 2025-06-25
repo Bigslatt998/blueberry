@@ -1,7 +1,8 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { iProduct } from '../types';
-import { db } from '../firebase';
+// import { db } from '../firebase';
+import { db } from '../firebase.config';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';

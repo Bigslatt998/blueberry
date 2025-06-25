@@ -11,13 +11,10 @@ import { faAnglesRight as farAngle, faTrash} from '@fortawesome/free-solid-svg-i
 import { Empty } from '../../List';
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import { db } from "../../firebase"; 
+import { db } from '../../firebase.config';
 import Swal from 'sweetalert2';
-interface CartProps {
-  isCart: boolean;
-  setIsCart: React.Dispatch<React.SetStateAction<boolean>>
-}
-export const CartPage = (props: CartProps) => {
+
+export const CartPage = () => {
 const { cart, ClearCart, removeFromCart, updateQuantity, subtotal, total, vat } = useCart();
  const [isKeywords, setisKeywords] = useState<boolean>(false)
   const [isCart, setIsCart] = useState<boolean>(false);  

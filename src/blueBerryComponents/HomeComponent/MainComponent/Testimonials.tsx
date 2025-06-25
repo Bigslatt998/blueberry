@@ -6,11 +6,6 @@ import { EffectCoverflow } from 'swiper/modules';
 import { TestimonialsList } from '../../../List';
 import 'swiper/css/effect-fade'
 import 'swiper/css/effect-coverflow'
-// type Props = {}
-
-
-
-
 const Testimonials = () => {
 
   

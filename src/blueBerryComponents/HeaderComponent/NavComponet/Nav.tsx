@@ -3,14 +3,12 @@ import './Nav.css'
 import { FaAngleDown } from 'react-icons/fa'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
-// type Props = {}
 interface HeaderProps {
   isKeywords: boolean;
   setisKeywords: React.Dispatch<React.SetStateAction<boolean>>
 }
 const Nav = (props: HeaderProps) => {
       const [isLocationDropDown, setIsLocationDropDown] = useState<boolean>(false)
-    // const LocaIcon = <FontAwesomeIcon icon={faLocationDot}/>
   return (
       <div className='NavContainer'>
         <div className="NAv">
