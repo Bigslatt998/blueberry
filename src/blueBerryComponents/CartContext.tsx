@@ -6,9 +6,11 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 // Helper to remove undefined fields
-function removeUndefined(obj: any) {
-  return Object.fromEntries(Object.entries(obj).filter(([_, v]) => v !== undefined));
-}
+  const cleanForFirestore = (obj: any): any => {
+    return Object.fromEntries(
+      Object.entries(obj).filter(([ v]) => v !== undefined)
+    );
+  };
 
 // Define your product type
 export interface iProduct {
@@ -16,7 +18,7 @@ export interface iProduct {
   name: string;
   price: number;
   img: string;
-  DelPricez?: number;
+  DelPrice?: number;
   type?: string;
   // Add other product fields as needed
 }
@@ -86,21 +88,38 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
           });
           return;
         }
-  setCart(prev => {
-    // Check for existing item by name (and size if you use it)
-    const exists = prev.some(item => item.name === product.name && item.selectedSize === size);
-    if (exists) {
-      toast.info(`${product.name} is already in cart`);
-      return prev;
-    }
-    const updatedCart = [...prev, removeUndefined({ ...product, quantity, selectedSize: size })];
+   setCart(prev => {
+      // Check for existing item
+      const exists = prev.some(item => 
+        item.name === product.name && item.selectedSize === size
+      );
+
+      if (exists) {
+        toast.info(`${product.name} is already in cart`);
+        return prev;
+      }
+
+      // Create new cart item with required fields
+      const newItem: CartItem = {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        img: product.img,
+        quantity,
+        // selectedSize: size,
+        // Optional fields only if they exist
+        ...(product.DelPrice && { DelPrice: product.DelPrice }),
+        ...(product.type && { type: product.type })
+      };
+
+      const updatedCart = [...prev, newItem];
     // Save to Firestore
     (async () => {
       try {
         const cartDocRef = getUserCartDocRef();
         await setDoc(cartDocRef, {
-          items: updatedCart,
-          updatedAt: new Date()
+            items: updatedCart.map(item => cleanForFirestore(item)),
+            updatedAt: new Date()
         }, { merge: true });
       } catch (error) {
         console.error('Error saving to Firestore:', error);
@@ -119,7 +138,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       try {
         const cartDocRef = getUserCartDocRef();
         await setDoc(cartDocRef, {
-          items: updatedCart,
+          items: updatedCart.map(item => cleanForFirestore(item)),
           updatedAt: new Date()
         }, { merge: true });
       } catch (error) {
@@ -141,7 +160,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       try {
         const cartDocRef = getUserCartDocRef();
         await setDoc(cartDocRef, {
-          items: updatedCart,
+          items: updatedCart.map(item => cleanForFirestore(item)),
           updatedAt: new Date()
         }, { merge: true });
       } catch (error) {
