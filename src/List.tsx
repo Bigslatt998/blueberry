@@ -261,7 +261,7 @@ import VendroII from './assets/VendroII.jpg'
 import VendroIII from './assets/VendroIII.jpg'
 import VendroIV from './assets/VendroIV.jpg'
 
-import VendorLogo from './assets/VendorLogo.jpg'
+// import VendorLogo from './assets/VendorLogo.jpg'
 import VendorLogoII from './assets/VendorLogoII.jpg'
 import VendorLogoIII from './assets/VendorLogoIII.jpg'
 import VendorLogoIV from './assets/VendorLogoIV.jpg'
@@ -271,7 +271,7 @@ import VendorLogoIV from './assets/VendorLogoIV.jpg'
 import { iVendors } from './types';
 
 export const vendorList: iVendors[] = [
-    {id: 1, Text: 'Mirah Fastion Pvt. Ltd',IMG: Vendro, Logo: VendorLogo,
+    {id: 1, Text: 'Mirah Fastion Pvt. Ltd',IMG: Vendro, Logo: VendorLogoII,
             sales: 'Fruits (230) / Vegetables (300) / Snacks (1480)', TotalSales: '2500'},
     {id: 2, Text: 'Ellah Fastion Pvt. Ltd',IMG: VendroII, Logo: VendorLogoII,
             sales: 'Fruits (150) / Vegetables (450) / Snacks (905)', TotalSales: '3900'},
