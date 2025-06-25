@@ -6,7 +6,7 @@ import Nav from '../../blueBerryComponents/HeaderComponent/NavComponet/Nav';
 import Footer from '../../blueBerryComponents/HomeComponent/MainComponent/Footer';
 import StarRating from '../../blueBerryComponents/HeaderComponent/Header.tsx/Star.tsx'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faXmark , faAnglesRight} from '@fortawesome/free-solid-svg-icons'
+import { faXmark , faAnglesRight, faTrash} from '@fortawesome/free-solid-svg-icons'
 import { Empty } from '../../List';
 import { useWishlist } from '../FavoriteContect';
 import { useNavigate } from "react-router-dom";
@@ -57,6 +57,8 @@ const Wishlist = () => {
                   <p></p>
                   <StarRating productName={item.name}/>
                   </div>
+                  <i onClick={clearWishlist} className='RemoveWish'><FontAwesomeIcon icon={faTrash}/></i>
+
                   <p className='firstof'>{item.name}</p>
                   <p className='lastof'>${item.price}</p>
                   </div>
