@@ -16,7 +16,7 @@ export interface iProduct {
   name: string;
   price: number;
   img: string;
-  DelPrice: number;
+  DelPrice?: number;
   type: string;
   // Add other product fields as needed
 }

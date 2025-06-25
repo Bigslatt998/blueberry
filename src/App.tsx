@@ -8,7 +8,6 @@ import VegetablesProducts from './blueBerryComponents/Products/VegetablesProduct
 import { Register } from './blueBerryComponents/RegisterComponent/Register.tsx'
 import { Login } from './blueBerryComponents/LoginComponent/Login.tsx'
 import { Profile } from './blueBerryComponents/ProfileComponent/Profile.tsx'
-// import { Wishlist } from './blueBerryComponents/WishlistComponent/Wishlist'
 import Wishlist from './blueBerryComponents/WishlistComponent/Wishlist'
 import Shop from './blueBerryComponents/ShopComponent/Shop.tsx'
 import SnacksProducts from './blueBerryComponents/ShopComponent/ShopProducts/ShopSnacksProducts.tsx'
@@ -22,9 +21,7 @@ import { TrackOrder } from './blueBerryComponents/TrackOrder/TrackOrder.tsx'
 import ExistingAddress from './blueBerryComponents/CheckoutComponent/ExistingAddress.tsx'
 import NewAddress from './blueBerryComponents/CheckoutComponent/NewAddress.tsx'
 import { OrderDetails } from './blueBerryComponents/TrackOrder/OrderDetails.tsx'
-import { useState } from 'react'
 function App() {
-  const [isCart, setIsCart] = useState<boolean>(false);
 
   return (
      <div className="BodyContainer">
@@ -46,7 +43,7 @@ function App() {
               <Route path='juiceProducts' element={<JuiceProducts/>}/>
               <Route path='vegetableProducts' element={<VegetableProducts/>}/>
             </Route>
-            <Route path='/Cartpage' element={<CartPage setIsCart={setIsCart} isCart={isCart}/>}/>
+            <Route path='/Cartpage' element={<CartPage/>}/>
             <Route path='/Checkout' element={<Checkout/>}>
                 <Route index element={<ExistingAddress/>}/>
                 <Route path='newaddress' element={<NewAddress/>}/>
