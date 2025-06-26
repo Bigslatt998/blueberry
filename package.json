@@ -10,7 +10,8 @@
     "deploy": "gh-pages -d dist",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "clean": "if exist node_modules\\.vite rd /s /q node_modules\\.vite && if exist dist rd /s /q dist"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
