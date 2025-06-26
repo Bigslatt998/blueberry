@@ -8,7 +8,7 @@ export default defineConfig({
    server:{
     host: true,
     headers: {
-      "content-type": "text/javascript",
+      "Content-Type": "text/javascript",
 
     }
   },
