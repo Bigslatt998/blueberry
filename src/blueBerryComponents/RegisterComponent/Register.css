@@ -139,12 +139,7 @@ label{
        padding: 1rem;
 
 }
-@media (max-width: 700px){
-    .RegisterForm{
-        display: flex;
-        flex-direction: column;
-    }
-}
+
 .Adddy{
     grid-column:  span 2;
     
@@ -168,9 +163,31 @@ input[type="number"] {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+.Error{
+    font-size: .7rem;
+    color: red;
+}
+.recaptcha{
+    margin-top: 30px;
+}
+.Addy{
+    display: none;
+}
 @media (max-width: 700px){
     .RegText{
     width: 95%;
     padding-inline: 1rem;
     }
+    .RegisterForm{
+    display: flex;
+    flex-direction: column;
+}
+.Addy{
+    display: flex;
+}
+.Adddy{
+    display: none;
+
+}
+
 }

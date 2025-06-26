@@ -1,0 +1,17 @@
+.orderIMG{
+    width: 80px;
+}
+.TrackContainer{
+
+    position: relative;
+}
+.StusDisplay{
+    position: absolute; 
+    top: -35px;
+    right: 0;
+    width: fit-content;
+    height: fit-content;
+    padding: .5rem;
+    font-size: .9rem;
+    background: #95abf1;
+}

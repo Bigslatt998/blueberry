@@ -101,7 +101,7 @@ export const Login = () => {
       <ReCAPTCHA
       sitekey="6Lczj2srAAAAAPptpOTiuR8rJPrflh7WF79yATIo"
       onChange={(value: string | null) => setRecaptchaValue(value)}
-    />
+     className='recaptcha'/>
       <button type="submit" disabled={!recaptchaValue}>Login</button>
 
       {errorMsg && <p className="error">{errorMsg}</p>}

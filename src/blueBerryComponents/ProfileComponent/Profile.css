@@ -158,4 +158,9 @@
         display: flex;
         flex-direction: column;
     }
+    .NAmeDis{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 }

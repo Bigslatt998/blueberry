@@ -40,7 +40,7 @@ const currentUser = auth.currentUser;
       try {
         await addDoc(collection(db, "orders"), orderData);
         console.log(orderData)
-        ClearCart();
+        // ClearCart();
         // navigate(`/order`);
         Swal.fire({
         icon: 'success',
@@ -59,7 +59,7 @@ const currentUser = auth.currentUser;
             products: cart
           }
         });
-        ClearCart();
+        // ClearCart();
     
         }
       });

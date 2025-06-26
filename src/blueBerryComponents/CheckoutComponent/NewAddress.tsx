@@ -3,6 +3,7 @@ import { locationData } from '../../List';
 import './NewAddress.css'
 import { useNavigate } from "react-router-dom"
 import Swal from 'sweetalert2';
+import { useCart } from '../CartContext';
 
 const NewAddress = () => {
   const [firstname, setfirstname] = useState('')
@@ -14,6 +15,7 @@ const NewAddress = () => {
     const [state, setState] = useState('')
     const [postCode, setPostCode] = useState('')
       const navigate = useNavigate()
+        const {  ClearCart, cart } = useCart();
     
 
   const HandleFirstname = (e: React.ChangeEvent<HTMLInputElement> ) => {
@@ -51,6 +53,14 @@ const NewAddress = () => {
 
     const handleProceed = (e: React.FormEvent) => {
   e.preventDefault();
+  if ( cart.length === 0) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Your cart is empty',
+      text: 'Please add items to your cart before proceeding.',
+    });
+    return;
+  };
   if (
     !firstname ||
     !lastname ||
@@ -74,6 +84,7 @@ const NewAddress = () => {
     showConfirmButton: false,
     timer: 1500
   });
+  ClearCart()
   navigate('/order');
 };
   

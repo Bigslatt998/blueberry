@@ -1,10 +1,22 @@
 import { useNavigate } from "react-router-dom"
+import { useCart } from '../CartContext';
+import Swal from 'sweetalert2';
 
 
 const ExistingAddress = () => {
   const navigate = useNavigate()
+        const {  ClearCart, cart} = useCart();
 
   const handleProceed =() => {
+    if ( cart.length === 0) {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Your cart is empty',
+          text: 'Please add items to your cart before proceeding.',
+        });
+        return;
+      };
+    ClearCart()
       navigate('/order')
     
   }

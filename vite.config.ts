@@ -7,23 +7,7 @@ export default defineConfig({
   base: '/blueberry/',
    server:{
     host: true,
-    headers: {
-      "Content-Type": "text/javascript",
-      "Cache-Control": "no-cache"
-
-    }
+    
   },
-  build: {
-    outDir: 'dist',
-    assetsInlineLimit: 0,
-    emptyOutDir: true,
-    rollupOptions: {
-      output: {
-        entryFileNames: 'assets/[name].js',
-        chunkFileNames: 'assets/[name].js',
-        assetFileNames: 'assets/[name].[ext]'
-      }
-    }
-  }
 })
 
