@@ -8,7 +8,6 @@ import Footer from '../HomeComponent/MainComponent/Footer';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faAnglesRight as farAngle} from '@fortawesome/free-solid-svg-icons'
 import Cart from '../CartComponent/Cart';
-import { useCart } from '../CartContext';
 
 
 export const Checkout = () => {
