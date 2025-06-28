@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
+import {useState} from 'react'
 import Home from './blueBerryComponents/HomeComponent/Home'
 import { AllnewProduct } from './blueBerryComponents/Products/AllnewProduct.tsx'
 import SnackProducts from './blueBerryComponents/Products/SnackProducts.tsx'
@@ -22,7 +23,7 @@ import ExistingAddress from './blueBerryComponents/CheckoutComponent/ExistingAdd
 import NewAddress from './blueBerryComponents/CheckoutComponent/NewAddress.tsx'
 import { OrderDetails } from './blueBerryComponents/TrackOrder/OrderDetails.tsx'
 function App() {
-
+  const [isCart, setIsCart] = useState<boolean>(false)
   return (
      <div className="BodyContainer">
           <Routes>
@@ -45,8 +46,8 @@ function App() {
             </Route>
             <Route path='/Cartpage' element={<CartPage/>}/>
             <Route path='/Checkout' element={<Checkout/>}>
-                <Route index element={<ExistingAddress/>}/>
-                <Route path='newaddress' element={<NewAddress/>}/>
+                <Route index element={<ExistingAddress isCart={isCart} setIsCart={setIsCart}/>}/>
+                <Route path='newaddress' element={<NewAddress />}/>
             </Route>
             <Route path='/order' element={<TrackOrder/>}/>
             <Route path="/order/:orderId" element={<OrderDetails />} />

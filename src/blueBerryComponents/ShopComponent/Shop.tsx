@@ -13,6 +13,7 @@ import CheckBox from '../../blueBerryComponents/ShopComponent/CheckBox.tsx'
 
 const Shop =() => {
   const [isKeywords, setisKeywords] = useState<boolean>(false)
+  const [isFlexLayOut, setisFlexLayOut] = useState<boolean>(false)
   const navigate = useNavigate(); 
   const [isCart, setIsCart] = useState<boolean>(false)
   const handleHome = () => {
@@ -36,6 +37,13 @@ const Shop =() => {
   if (category === 'fruit') return currentPath.includes('fruitProducts');
   return false;
 };
+
+  const toggleFlex =() => {
+    setisFlexLayOut(true)
+   }
+   const toggleGrid =() => {
+    setisFlexLayOut(false)
+   }
 const [price, setPrice] = useState(200); // Default max price
   return (
     <div className="ShopContainer">
@@ -154,13 +162,13 @@ const [price, setPrice] = useState(200); // Default max price
               <div className="SecondContent">
                 <div className="SeactionHeader">
                   <div className="SeactionBox1">
-                    <div className="Seactiongrid">
+                    <div className="Seactiongrid" onClick={toggleGrid}>
                       <span className="grid"></span>
                       <span className="grid"></span>
                       <span className="grid"></span>
                       <span className="grid"></span>
                     </div>
-                    <div className="Seactionflex">
+                    <div className="Seactionflex" onClick={toggleFlex}>
                       <div className="flex"></div>
                       <div className="flex"></div>
                       <div className="flex"></div>
@@ -186,7 +194,7 @@ const [price, setPrice] = useState(200); // Default max price
 
                 </div>
                   <section className='productSection'>
-                      <Outlet  context={{ price }}/>
+                      <Outlet  context={{ price, isFlexLayOut, setisFlexLayOut }}/>
                   </section>
               </div>
             </div>

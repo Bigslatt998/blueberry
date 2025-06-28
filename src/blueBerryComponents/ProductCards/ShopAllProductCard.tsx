@@ -1,4 +1,6 @@
 import { useContext} from 'react'
+import './ShopAllProductCard.css'
+
 import { CartContext } from '../CartContext.tsx'
 import { iProduct } from '../../types.ts'
 import StarRating from '../HeaderComponent/Header.tsx/Star.tsx'
@@ -9,10 +11,11 @@ import { useWishlist } from '../FavoriteContect.tsx'
 interface Props {
     product: iProduct;
     onQuickView: (product: iProduct) => void;
+    isFlexLayOut: boolean;
 }
 
 
-const ShopAllProductCard =({product, onQuickView}: Props) => {
+const ShopAllProductCard =({product, onQuickView, isFlexLayOut}: Props) => {
     const {addToCart} =useContext(CartContext)
     const {isInWishlist, toggleWishlist} = useWishlist()
     const isWishlist = isInWishlist(product.name)
@@ -21,7 +24,7 @@ const ShopAllProductCard =({product, onQuickView}: Props) => {
         console.log(product)
     }
     return (
-    <div className='NewArrivalCardCardContainer'>
+    <div className={`${isFlexLayOut ? 'FlexNewArrival' : 'GridCardContainer'}`}>
         <div className="Box">
         <div className="IMG">
             <img src={product.img}/>
@@ -34,7 +37,7 @@ const ShopAllProductCard =({product, onQuickView}: Props) => {
         </div>
         <div className="ProductDails">
             <div className="BOx1">
-                <p></p>
+                {/* <p></p> */}
                 <StarRating productName={product.name}/>
             </div>
             <div className="BOx2">

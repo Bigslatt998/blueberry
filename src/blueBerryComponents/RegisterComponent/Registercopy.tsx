@@ -66,8 +66,11 @@ export const Register = () => {
 
   const [verificationCode, setVerificationCode] = useState('');
 const [sentCode, setSentCode] = useState('');
-const [codeSent, setCodeSent] = useState(false);
+const [codeSent, setCodeSent] = useState<boolean>(false);
 const [ codeError, setCodeError] = useState('');
+const [resendDisable, setResendDisabe] = useState<boolean>(false);
+const [resendCountDown, setResendCountDown] = useState<number>(0);
+
 const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
 // const [country, setCountry] = useState('')
   // const [city, setCity] = useState('')
@@ -108,7 +111,13 @@ const {
 
   const HandleRegister = async (data:iRegisterInfo) => {
     console.log(data)
-       if (verificationCode === sentCode) {
+       if(verificationCode === '' ){
+            Swal.fire({
+            icon: 'error',
+            title: 'Enter verification code',
+            text: 'Verification input cant be empty.',
+          });
+        } else if (verificationCode === sentCode  ) {
                 setCodeError('');
                 Swal.fire({
                 icon: 'success',
@@ -118,7 +127,8 @@ const {
                 showConfirmButton: false
               });
       navigate('/login');
-        } else {
+        } 
+        else {
           setCodeError('Incorrect code. Please try again.');
           Swal.fire({
             icon: 'error',
@@ -145,8 +155,12 @@ const {
   }
     const [isKeywords, setisKeywords] = useState<boolean>(false)
     const [isCart, setIsCart] = useState<boolean>(false)
+    const [recapErr, setRecapErr] = useState<boolean>(false)
   
     const sendVerificationCode = async () => {
+  if (!recaptchaValue) {
+    setRecapErr(true)
+  }
   const code = Math.floor(10000 + Math.random() * 90000).toString(); // 5-digit code
   setSentCode(code);
   setCodeSent(true);
@@ -174,6 +188,7 @@ const {
     timer: 2500,
     showConfirmButton: false
   });
+    startResendCountdown(); // Start the countdown for resending the code
   } catch (error) {
     console.log(error)
     Swal.fire({
@@ -186,6 +201,25 @@ const {
     setCodeloading(false)
   }
 };
+const startResendCountdown = () => {
+  setResendDisabe(true);
+  let seconds = 60;
+  setResendCountDown(seconds);
+
+  const timer = setInterval(() => {
+    seconds -= 1;
+    setResendCountDown(seconds);
+    if(seconds <= 0) {
+      clearInterval(timer)
+      setResendDisabe(false);
+    }
+  }, 1000);
+}
+const resendCode = async () => {
+  if(resendDisable) return; // Prevent resending if disabled
+  setCodeError('');
+  await sendVerificationCode();
+}
   return (
     <div className='RegistrationContainer'>
         <FlatOffer/>
@@ -278,14 +312,14 @@ const {
               <span className='Error'>{errors.address.message}</span>)}
           </label>
 
-          {/* <label className='Adddy'>
+          <label className='Adddy'>
             <p>Address*</p>
             <input 
             type='text' placeholder='Adress Line 1'
             {...register('address')} />
           { errors.address && (
               <span className='Error'>{errors.address.message}</span>)}
-          </label> */}
+          </label>
 
           <label>
             <p>Country*</p>
@@ -353,11 +387,14 @@ const {
             sitekey="6Lczj2srAAAAAPptpOTiuR8rJPrflh7WF79yATIo"
             onChange={(value: string | null) => setRecaptchaValue(value)}
             className='recaptcha'/>
+            {recapErr && (
+              <span className='Error'>Please complete the reCAPTCHA</span>
+            )}
     {/* <button type='submit'>Register</button> */}
 
-
+                                    {/* */}
           {!codeSent ? (
-            <button type='button' onClick={sendVerificationCode} disabled={!recaptchaValue}>
+            <button type='button' onClick={sendVerificationCode} disabled={!recaptchaValue} >
               Send code
             </button>
           ): (
@@ -366,8 +403,9 @@ const {
               {Codeloading ? (
                 <CakeLoading/>
               ): (
-                <label>
+        <label className='Resendcode'>
       <p>Enter Verification Code</p>
+      <div className='CodeContainerr'>
       <input
         type="text"
         value={verificationCode}
@@ -376,7 +414,10 @@ const {
         required
         className='CodeInput'
       />
+      <button onClick={resendCode} disabled={resendDisable}>{resendDisable ? `Resend in ${resendCountDown} seconds` : 'Resend'}</button>
+    </div>
     </label>
+
               )}
     <button type='submit'>Register</button>
      {codeError && <span style={{ color: 'red' }}>{codeError}</span>}
@@ -391,6 +432,7 @@ const {
             <CakeLoading/>
           </div>
          )}
+         
         </div>
 
        

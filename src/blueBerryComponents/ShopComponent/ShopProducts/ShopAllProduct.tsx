@@ -2,11 +2,13 @@ import {useState} from 'react'
 import { exportProduct, onQuickView } from '../../../List'
 import ShopAllProductCard from '../../ProductCards/ShopAllProductCard'
 const PRODUCTS_PER_PAGE = 12
-type ContextType = { price: number };
+type ContextType = { price: number;
+                    isFlexLayOut: boolean;
+ };
 import { useOutletContext } from "react-router-dom";
 const ShopAllProduct =() => {
      const Allproducts = exportProduct.Allproducts
-    const { price } = useOutletContext<ContextType>();
+    const { price, isFlexLayOut } = useOutletContext<ContextType>();
 const filteredProducts = Allproducts.filter(product => product.price <= price)
   const [currentPage, setCurrentPage] = useState(1)
   const totalPages = Math.ceil(Allproducts.length / PRODUCTS_PER_PAGE)
@@ -17,12 +19,14 @@ const filteredProducts = Allproducts.filter(product => product.price <= price)
     setCurrentPage(page)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
+ 
 
      return (
       <>
-    <div className="ShopGrid">
+    <div className={`${isFlexLayOut ? 'ShopFlex' : 'ShopGrid'}`}  >
         {productsToShow?.map((product) =>(
-            <ShopAllProductCard key={product.id}   product={product} onQuickView={onQuickView}/>
+            <ShopAllProductCard key={product.id} 
+            product={product} onQuickView={onQuickView} isFlexLayOut={isFlexLayOut}/>
         ))}
     </div>
     <div className="ShopPagenation">

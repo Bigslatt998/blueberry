@@ -1,13 +1,36 @@
 import { useNavigate } from "react-router-dom"
 import { useCart } from '../CartContext';
 import Swal from 'sweetalert2';
+import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { db } from '../../firebase.config'; 
+interface CartProps {
+  isCart: boolean;
+  setIsCart: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-
-const ExistingAddress = () => {
+const ExistingAddress = (props: CartProps) => {
+  const auth = getAuth();
+      const { cart, ClearCart, subtotal, vat, total, removeFromCart, updateQuantity } = useCart();
+  function removeUndefinedFields<T extends object>(obj: T): T {
+    return Object.fromEntries(
+      Object.entries(obj).filter(([v]) => v !== undefined)
+    ) as T;
+  }
+  
+  const currentUser = auth.currentUser;
+  const orderId = Math.floor(1000 + Math.random() * 9000).toString(); 
+  const orderData = {
+          orderId,
+          products: cart.map(item => removeUndefinedFields(item)),
+          total,
+          status: false,
+          createdAt: Timestamp.now(),
+          userId: currentUser?.uid || ""
+        };
   const navigate = useNavigate()
-        const {  ClearCart, cart} = useCart();
 
-  const handleProceed =() => {
+  const handleProceed = async () => {
     if ( cart.length === 0) {
         Swal.fire({
           icon: 'warning',
@@ -16,8 +39,39 @@ const ExistingAddress = () => {
         });
         return;
       };
+      try {
+              await addDoc(collection(db, "orders"), orderData);
+              console.log(orderData)
+              // ClearCart();
+              // navigate(`/order`);
+              props.setIsCart(false)
+              Swal.fire({
+              icon: 'success',
+              title: 'Your Order has been placed!',
+              text: 'Check order?',
+              showCancelButton: true,
+              confirmButtonText: 'Go to Checkout',
+              cancelButtonText: 'Cancel',
+              customClass: {
+                container: 'SwalContainer'
+              }
+            }).then((result) => {
+              if(result.isConfirmed) {
+              navigate(`/order`, {
+                state: {
+                  subtotal,
+                  total,
+                  vat,
+                  products: cart
+                }
+              });
+              }
+            });
+            } catch (error) {
+              console.log("Failed to place order", error);
+            }
     ClearCart()
-      navigate('/order')
+      // navigate('/order')
     
   }
 

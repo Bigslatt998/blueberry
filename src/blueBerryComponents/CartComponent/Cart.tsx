@@ -4,11 +4,8 @@ import { useCart } from '../CartContext';
 import { Empty } from '../../List';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faXmark, faTrash} from '@fortawesome/free-solid-svg-icons'
-import { collection, addDoc, Timestamp } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
-import { db } from '../../firebase.config'; 
 import { useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2';
+
 
 // type Props = {}
 interface CartProps {
@@ -18,54 +15,20 @@ interface CartProps {
 const  Cart = (props: CartProps) => {
     const { cart, ClearCart, subtotal, vat, total, removeFromCart, updateQuantity } = useCart();
   const navigate = useNavigate()
-function removeUndefinedFields<T extends object>(obj: T): T {
-  return Object.fromEntries(
-    Object.entries(obj).filter(([v]) => v !== undefined)
-  ) as T;
-}
-const auth = getAuth();
-const currentUser = auth.currentUser;
+
+
       const handleCheck = async () => {
       if (cart.length === 0) return;
     
-      const orderId = Math.floor(1000 + Math.random() * 9000).toString(); 
-      const orderData = {
-        orderId,
-        products: cart.map(item => removeUndefinedFields(item)),
-        total,
-        status: false,
-        createdAt: Timestamp.now(),
-        userId: currentUser?.uid || ""
-      };
-      try {
-        await addDoc(collection(db, "orders"), orderData);
-        console.log(orderData)
-        // ClearCart();
-        // navigate(`/order`);
-        Swal.fire({
-        icon: 'success',
-        title: 'Your Order has been placed!',
-        text: 'Check order?',
-        showCancelButton: true,
-        confirmButtonText: 'Go to Checkout',
-        cancelButtonText: 'Cancel'
-      }).then((result) => {
-        if(result.isConfirmed) {
-        navigate(`/Checkout`, {
-          state: {
+      navigate(`/Checkout`, {
+        state: {
             subtotal,
             total,
             vat,
             products: cart
           }
-        });
-        // ClearCart();
-    
-        }
-      });
-      } catch (error) {
-        console.log("Failed to place order", error);
-      }
+      })
+     
     };
     useEffect(() => {
         if(props.isCart) {
@@ -97,7 +60,7 @@ const currentUser = auth.currentUser;
                 <div className='emptyCart'>
             <img src={Empty} alt='Empty Cart'/>
 
-            <p> Hey LOOK! Your cart is empty <a href='/shop'>Go Shopping</a></p>
+            <p> Hey LOOK! Your cart is empty <a href='/blueberry/shop'>Go Shopping</a></p>
             </div>
           ) : (
             <>

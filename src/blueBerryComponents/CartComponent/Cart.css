@@ -158,6 +158,9 @@
     display: flex;
     justify-content: space-between;
 }
+.SwalContainer{
+    z-index: 99999999;
+}
 @media (max-width: 700px){
     .CartOpen{
         width: 100%;

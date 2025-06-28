@@ -117,7 +117,7 @@ const currentUser = auth.currentUser;
               <div className='emptyCart'>
                           <img src={Empty} alt='Empty Cart'/>
               
-                          <p> Hey LOOK! Your cart is empty <a href='/shop'>Go Shopping</a></p>
+                          <p> Hey LOOK! Your cart is empty <a href='/blueberry/shop'>Go Shopping</a></p>
                   </div>
             ): (
               <table className="table">

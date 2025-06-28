@@ -1,5 +1,4 @@
 import  {useContext} from 'react'
-import './FruitsCard.css'
 import { CartContext } from '../CartContext.tsx'
 import { iProduct } from '../../types.ts'
 import StarRating from '../HeaderComponent/Header.tsx/Star.tsx'
