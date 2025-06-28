@@ -107,7 +107,7 @@ export const Login = () => {
       {errorMsg && <p className="error">{errorMsg}</p>}
       </div>
     </form>
-        <p className='LoginText'>Forget password? <a href="/login">Click here</a></p>
+        <p className='LoginText'>Forget password? <a href="/blueblerry/login">Click here</a></p>
 
     </div>
      {isCart && (

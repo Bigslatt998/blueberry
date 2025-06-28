@@ -426,8 +426,9 @@ const resendCode = async () => {
           
 
         </form>
-        <p className='LoginText'>Already have an account? <a href="/login">Login</a></p>
-           {loading && (
+        <p className='LoginText'>Already have an account? 
+          <span className='heretoLogin' onClick={() => navigate('/login')}>Login</span></p>
+          {loading && (
           <div className='Cakeloading'>
             <CakeLoading/>
           </div>

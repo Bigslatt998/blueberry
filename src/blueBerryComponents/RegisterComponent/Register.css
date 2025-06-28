@@ -185,6 +185,14 @@ input[type="number"] {
 
 
 }
+.heretoLogin{
+    cursor: pointer;
+    color: var(--Text-color);
+}
+.heretoLogin:hover{
+  color: #2646ad;
+
+}
 
 @media (max-width: 700px){
     .RegText{
