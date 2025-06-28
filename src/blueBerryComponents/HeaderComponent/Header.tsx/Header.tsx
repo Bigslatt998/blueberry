@@ -12,7 +12,7 @@ import RelatedProductCard from '../../HeaderComponent/Header.tsx/ReletedProductC
 import { useWishlist } from '../../FavoriteContect.tsx'
 import { useCart } from '../../CartContext.tsx'
 import { useNavigate } from "react-router-dom";
-
+import Swal from 'sweetalert2';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 interface HeaderProps {
   isKeywords: boolean;
@@ -103,8 +103,21 @@ const HandleRegister = () => {
 }
 
 const HandleWishlist = () => {
-  navigate('/wishlist')
-  // console.log('working')
+  const user = getAuth().currentUser;
+        if (!user) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Please log in',
+            text: 'You need to log in to check wishlist.',
+            confirmButtonText: 'Go to Login'
+          }).then(result => {
+            if (result.isConfirmed) {
+              navigate('/login');
+            }
+            });
+            return;
+          }
+      navigate('/wishlist')
 }
 const handleHome = () => {
   navigate('/')
@@ -123,12 +136,19 @@ const handleCart = () => {
 
      const handleCheckout = () => {
       const user = getAuth().currentUser;
-              if (!user) {
-                if (window.confirm('Please login')) {
-                  setTimeout(() => navigate('/login'), 0);
-                }
-                return;
-              }
+        if (!user) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Please log in',
+            text: 'You need to log in to check wishlist.',
+            confirmButtonText: 'Go to Login'
+          }).then(result => {
+            if (result.isConfirmed) {
+              navigate('/login');
+            }
+            });
+            return;
+          }
       navigate('/Checkout')
     }
   return (

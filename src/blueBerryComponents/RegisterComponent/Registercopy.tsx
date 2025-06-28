@@ -432,12 +432,8 @@ const resendCode = async () => {
           <div className='Cakeloading'>
             <CakeLoading/>
           </div>
-         )}
-         
-        </div>
-
-       
-
+        )}
+      </div>
         {isCart && (
     <Cart isCart={isCart}         
     setIsCart={setIsCart}/>
