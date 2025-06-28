@@ -7,8 +7,11 @@ import { useCart } from '../CartContext';
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { db } from '../../firebase.config'; 
-
-const NewAddress = () => {
+interface CartProps {
+  isCart: boolean;
+  setIsCart: React.Dispatch<React.SetStateAction<boolean>>
+}
+const NewAddress = (props: CartProps) => {
   const [firstname, setfirstname] = useState('')
     const [lastname, setlastname] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
@@ -18,7 +21,6 @@ const NewAddress = () => {
     const [state, setState] = useState('')
     const [postCode, setPostCode] = useState('')
       const navigate = useNavigate()
-        const {  ClearCart, cart } = useCart();
     
 
   const HandleFirstname = (e: React.ChangeEvent<HTMLInputElement> ) => {
@@ -70,9 +72,8 @@ const NewAddress = () => {
                 createdAt: Timestamp.now(),
                 userId: currentUser?.uid || ""
               };
-        const navigate = useNavigate()
 
-    const handleProceed = (e: React.FormEvent) => {
+    const handleProceed =  async (e: React.FormEvent) => {
   e.preventDefault();
   if ( cart.length === 0) {
     Swal.fire({

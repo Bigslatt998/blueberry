@@ -47,7 +47,7 @@ function App() {
             <Route path='/Cartpage' element={<CartPage/>}/>
             <Route path='/Checkout' element={<Checkout/>}>
                 <Route index element={<ExistingAddress isCart={isCart} setIsCart={setIsCart}/>}/>
-                <Route path='newaddress' element={<NewAddress />}/>
+                <Route path='newaddress' element={<NewAddress isCart={isCart} setIsCart={setIsCart} />}/>
             </Route>
             <Route path='/order' element={<TrackOrder/>}/>
             <Route path="/order/:orderId" element={<OrderDetails />} />
