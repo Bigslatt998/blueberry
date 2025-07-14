@@ -312,14 +312,14 @@ const resendCode = async () => {
               <span className='Error'>{errors.address.message}</span>)}
           </label>
 
-          <label className='Adddy'>
+          {/* <label className='Adddy'>
             <p>Address*</p>
             <input 
             type='text' placeholder='Adress Line 1'
             {...register('address')} />
           { errors.address && (
               <span className='Error'>{errors.address.message}</span>)}
-          </label>
+          </label> */}
 
           <label>
             <p>Country*</p>
