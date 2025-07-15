@@ -1,10 +1,13 @@
-import {useEffect, useState} from 'react'
-import './CountDown.css'
+import { useEffect, useState } from 'react';
+import './CountDown.css';
+
+// Pass userId (or userEmail) as a prop to make countdown unique per user
 interface CountdownProps {
-  initialDays: number;
-  initialHours: number;
-  initialMinutes: number;
-  initialSeconds: number;
+  userKey: string; // e.g. userId or userEmail
+  initialDays?: number;
+  initialHours?: number;
+  initialMinutes?: number;
+  initialSeconds?: number;
 }
 
 interface TimeLeft {
@@ -12,44 +15,25 @@ interface TimeLeft {
   hours: number;
   minutes: number;
   seconds: number;
-  endTime?: number; 
+  endTime?: number;
 }
+
 export const CountDown: React.FC<CountdownProps> = ({
-     initialDays = 25,
-  initialHours = 21,
-  initialMinutes = 47,
-  initialSeconds = 45,
+  userKey,
+  initialDays = 25,
+  initialHours = 0,
+  initialMinutes = 0,
+  initialSeconds = 0,
 }) => {
-  
-  const loadSavedState = (): TimeLeft => {
-    const savedState = localStorage.getItem('countdownState');
-    if (savedState) {
-      try {
-        const parsed = JSON.parse(savedState);
-        // If we have an endTime, calculate current time left
-        if (parsed.endTime) {
-          return calculateTimeLeft(parsed.endTime);
-        }
-        return parsed;
-      } catch (e) {
-        console.error('Failed to parse saved state', e);
-      }
-    }
-    // No saved state, return initial values
-    return {
-      days: initialDays,
-      hours: initialHours,
-      minutes: initialMinutes,
-      seconds: initialSeconds
-    };
-  };
-   // Calculate time left based on end timestamp
+  const storageKey = `countdownState_${userKey}`;
+
+  // Helper to calculate time left
   const calculateTimeLeft = (endTime: number): TimeLeft => {
     const now = new Date().getTime();
     const difference = endTime - now;
 
     if (difference <= 0) {
-      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+      return { days: 0, hours: 0, minutes: 0, seconds: 0, endTime };
     }
 
     const days = Math.floor(difference / (1000 * 60 * 60 * 24));
@@ -60,50 +44,72 @@ export const CountDown: React.FC<CountdownProps> = ({
     return { days, hours, minutes, seconds, endTime };
   };
 
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>(loadSavedState());
-  // Calculate end time when component mounts
-  useEffect(() => {
-    // Only calculate end time if we don't have one saved
-    if (!timeLeft.endTime) {
-      const now = new Date();
-      const endTime = new Date(
-        now.getTime() +
-          timeLeft.days * 24 * 60 * 60 * 1000 +
-          timeLeft.hours * 60 * 60 * 1000 +
-          timeLeft.minutes * 60 * 1000 +
-          timeLeft.seconds * 1000
-      ).getTime();
-
-      setTimeLeft(prev => ({ ...prev, endTime }));
+  // Load or initialize countdown for this user
+  const loadSavedState = (): TimeLeft => {
+    const savedState = localStorage.getItem(storageKey);
+    if (savedState) {
+      try {
+        const parsed = JSON.parse(savedState);
+        if (parsed.endTime) {
+          return calculateTimeLeft(parsed.endTime);
+        }
+      } catch (e) {
+        console.error('Failed to parse saved state', e);
+      }
     }
-  }, [timeLeft.endTime, timeLeft.hours, timeLeft.days, timeLeft.minutes, timeLeft.seconds]);
-   // Timer effect
+    // No saved state, start from now + 25 days
+    const now = new Date().getTime();
+    const endTime =
+      now +
+      initialDays * 24 * 60 * 60 * 1000 +
+      initialHours * 60 * 60 * 1000 +
+      initialMinutes * 60 * 1000 +
+      initialSeconds * 1000;
+    return calculateTimeLeft(endTime);
+  };
+
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(loadSavedState());
+
+  // When userKey changes (new user logs in), reset countdown for that user
+  useEffect(() => {
+    setTimeLeft(loadSavedState());
+    // eslint-disable-next-line
+  }, [userKey]);
+
+  // Timer effect
   useEffect(() => {
     if (!timeLeft.endTime) return;
 
     const timer = setInterval(() => {
       const newTimeLeft = calculateTimeLeft(timeLeft.endTime!);
       setTimeLeft(newTimeLeft);
-      
-      // Save to localStorage
-      localStorage.setItem('countdownState', JSON.stringify(newTimeLeft));
+
+      // Save to localStorage for this user
+      localStorage.setItem(storageKey, JSON.stringify({ ...newTimeLeft, endTime: timeLeft.endTime }));
 
       // Stop if countdown finished
-      if (newTimeLeft.days <= 0 && newTimeLeft.hours <= 0 && 
-          newTimeLeft.minutes <= 0 && newTimeLeft.seconds <= 0) {
+      if (
+        newTimeLeft.days <= 0 &&
+        newTimeLeft.hours <= 0 &&
+        newTimeLeft.minutes <= 0 &&
+        newTimeLeft.seconds <= 0
+      ) {
         clearInterval(timer);
       }
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft.endTime]);
-  
+    // eslint-disable-next-line
+  }, [timeLeft.endTime, userKey]);
+
   return (
     <div className="CountDOwn">
-        <p> <span className="Bold">{timeLeft.days}</span> <span>Days</span>. &nbsp; 
+      <p>
+        <span className="Bold">{timeLeft.days}</span> <span>Days</span>. &nbsp;
         <span className="Bold">{timeLeft.hours}</span> <span>Hour</span>:&nbsp;
         <span className="Bold">{timeLeft.minutes}</span> <span>Minutes</span>:&nbsp;
-        <span className="Bold">{timeLeft.seconds}</span> <span>Seconds</span></p>
+        <span className="Bold">{timeLeft.seconds}</span> <span>Seconds</span>
+      </p>
     </div>
-  )
-}
+  );
+};

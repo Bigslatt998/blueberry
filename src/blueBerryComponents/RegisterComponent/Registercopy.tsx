@@ -109,50 +109,101 @@ const {
 
 
 
-  const HandleRegister = async (data:iRegisterInfo) => {
-    console.log(data)
-       if(verificationCode === '' ){
-            Swal.fire({
-            icon: 'error',
-            title: 'Enter verification code',
-            text: 'Verification input cant be empty.',
-          });
-        } else if (verificationCode === sentCode  ) {
-                setCodeError('');
-                Swal.fire({
-                icon: 'success',
-                title: 'Registration Successful!',
-                text: 'You can now log in.',
-                timer: 2000,
-                showConfirmButton: false
-              });
-      navigate('/login');
-        } 
-        else {
-          setCodeError('Incorrect code. Please try again.');
-          Swal.fire({
-            icon: 'error',
-            title: 'Incorrect Code',
-            text: 'The verification code you entered is incorrect.',
-          });
-        }
-    setLoading(true); 
-        try {
-      const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
-    //   // Save user info to Firestore
-      await addDoc(collection(db, "RegisteredUsers"), {
-        ...data,
-        uid: userCredential.user.uid
-      });
-      console.log('User registered:', userCredential.user);
-      reset(); // Reset form fields
+  // const HandleRegister = async (data:iRegisterInfo) => {
+  //   console.log(data)
+  //      if(verificationCode === '' ){
+  //           Swal.fire({
+  //           icon: 'error',
+  //           title: 'Enter verification code',
+  //           text: 'Verification input cant be empty.',
+  //         });
+  //       } else if (verificationCode === sentCode  ) {
+  //               setCodeError('');
+  //               Swal.fire({
+  //               icon: 'success',
+  //               title: 'Registration Successful!',
+  //               text: 'You can now log in.',
+  //               timer: 2000,
+  //               showConfirmButton: false
+  //             });
+      
+  //       } 
+  //       else {
+  //         setCodeError('Incorrect code. Please try again.');
+  //         Swal.fire({
+  //           icon: 'error',
+  //           title: 'Incorrect Code',
+  //           text: 'The verification code you entered is incorrect.',
+  //         });
+  //       }
+  //   setLoading(true); 
+  //       try {
+  //     const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
+  //   //   // Save user info to Firestore
+  //     await addDoc(collection(db, "RegisteredUsers"), {
+  //       ...data,
+  //       uid: userCredential.user.uid
+  //     });
+  //     console.log('User registered:', userCredential.user);
+  //     reset(); // Reset form fields
+  //   navigate('/login');
+  //   } catch (error) {
+  //     console.error('Error registering user:', error)
+  //   }finally{
+  //     setLoading(false);
+  //   }
+  // }
 
-    } catch (error) {
-      console.error('Error registering user:', error)
-    }finally{
-      setLoading(false);
-    }
+  const HandleRegister = async (data: iRegisterInfo) => {
+  setLoading(true);
+  if (verificationCode === '') {
+    Swal.fire({
+      icon: 'error',
+      title: 'Enter verification code',
+      text: 'Verification input cant be empty.',
+    });
+    setLoading(false);
+    return;
   }
+  if (verificationCode !== sentCode) {
+    setCodeError('Incorrect code. Please try again.');
+    Swal.fire({
+      icon: 'error',
+      title: 'Incorrect Code',
+      text: 'The verification code you entered is incorrect.',
+    });
+    setLoading(false);
+    return;
+  }
+  setCodeError('');
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
+    await addDoc(collection(db, "RegisteredUsers"), {
+      ...data,
+      uid: userCredential.user.uid
+    });
+    console.log('User registered:', userCredential.user);
+    reset();
+    Swal.fire({
+      icon: 'success',
+      title: 'Registration Successful!',
+      text: 'You can now log in.',
+      timer: 2000,
+      showConfirmButton: false
+    });
+    navigate('/login');
+  } catch (error: any) {
+    console.error('Error registering user:', error);
+    Swal.fire({
+      icon: 'error',
+      title: 'Registration Failed',
+      text: error?.message || 'There was an error registering your account. Please try again.'
+    });
+  } finally {
+    setLoading(false);
+  }
+};
+
     const [isKeywords, setisKeywords] = useState<boolean>(false)
     const [isCart, setIsCart] = useState<boolean>(false)
     const [recapErr, setRecapErr] = useState<boolean>(false)
@@ -312,14 +363,7 @@ const resendCode = async () => {
               <span className='Error'>{errors.address.message}</span>)}
           </label>
 
-          {/* <label className='Adddy'>
-            <p>Address*</p>
-            <input 
-            type='text' placeholder='Adress Line 1'
-            {...register('address')} />
-          { errors.address && (
-              <span className='Error'>{errors.address.message}</span>)}
-          </label> */}
+      
 
           <label>
             <p>Country*</p>

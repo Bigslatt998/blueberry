@@ -12,6 +12,9 @@ import TastySnacks from '../../../assets/TastySnaks.png'
 import Testimonials from './Testimonials';
 import Footer from './Footer';
 import ExploreCategories from '../ExploreCategoriesComponent/ExploreCategories';
+import { getAuth } from "firebase/auth";
+const auth = getAuth();
+const user = auth.currentUser;
 // interface HeaderProps {
 //   isCart: boolean;
 //   setIsCart: React.Dispatch<React.SetStateAction<boolean>>
@@ -90,7 +93,7 @@ const Main =() => {
               <div className='DealOfDdayBox1H'>
                 <h3>Deal Of The <span>Day</span></h3>
                 
-                <CountDown initialDays={1} initialHours={12} initialMinutes={30} initialSeconds={0}/>
+                <CountDown userKey={user?.uid || "guest"}/>
               </div>
               <p>Don't wait. The time will never be just right.</p>
             </div>
